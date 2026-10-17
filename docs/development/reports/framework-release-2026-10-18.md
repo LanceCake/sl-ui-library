@@ -1,6 +1,6 @@
 # Additive framework release verification — 2026-10-18
 
-Status: locally verified release candidate; independent whole-branch review and publication are separate final gates. This report records bounded verification, not a guarantee that every possible application state, browser or backend integration is correct.
+Status: independently reviewed and published as release 1.2.0, commit `78f9b525fb85c898223fe41979016a5c28c6b580`. Both GitHub Actions workflows and post-deployment verification passed. This report records bounded verification, not a guarantee that every possible application state, browser or backend integration is correct.
 
 ## Scope and source identity
 
@@ -34,7 +34,10 @@ Operations use safe local fixtures, callbacks and in-memory inputs. No real auth
 ## Final release gates
 
 - Final build and canonical artifact verification passed all390 controllers and5,900 exact ZIP entries with a31,703,163-byte source bundle under the existing32,000,000-byte updater limit. The five-file runtime identities remain the ones tested in the780/390 framework evidence. Commit tracked generated artifacts with source changes; ZIPs are regenerated and remain ignored.
-- Review the complete isolated release diff, not the unrelated dirty development checkout. Publication is a separate owner-authorized step through the existing public-only Pages workflow. Verify the resulting deployment before claiming the new formats/elements are live.
+- Independent whole-branch Spec and Quality reviews approved the complete isolated diff, with no unresolved findings. The unrelated dirty development checkout was not staged or reset. The one minor authoring-asset finding was fixed and independently re-reviewed before publication.
+- Owner-authorized non-force publication produced commit `78f9b525fb85c898223fe41979016a5c28c6b580`. [Check library](https://github.com/SLtowl/sl-ui-library/actions/runs/39076446758) and [Deploy static library](https://github.com/SLtowl/sl-ui-library/actions/runs/39076446810) both completed successfully through the existing public-only workflow.
+- Post-deployment HTTP verification compared 63 real public files/downloads byte-for-byte with the verified candidate: catalog batches, presentation/source-viewer assets and four representative new packages with all framework companions and ZIPs. The verified catalog contains388 entries /390 variants and exactly91 additions.
+- Post-deployment Edge browser smoke checks passed9/9: the live home plus four representative additions at1440px and390px. All five source tabs selected and displayed the exact candidate source; no page overflow, runtime/console errors or HTTP errors were observed. Browser and context were closed. This smoke check supplements, rather than replaces, the full local evidence above.
 
 ## Remaining integration limits
 
