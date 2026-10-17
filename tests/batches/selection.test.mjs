@@ -1,3 +1,4 @@
+import {withFrameworkFiles} from '../framework-file-contract.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile, readdir } from 'node:fs/promises';
@@ -130,7 +131,7 @@ test('exactly ten complete, independent selection exports and literal catalog en
     assert.equal(item.downloads[variant], './downloads/matte-' + variant + '.zip');
     assert.equal(item.usage.length, 3);
     const files = await readdir(packageURL(slug));
-    assert.deepEqual(files.sort(), ['LICENSE', 'OFL.txt', 'buttons.css', 'buttons.js', 'example.js', 'index.html', 'instrument-sans-variable.woff2'].sort());
+    assert.deepEqual(files.sort(), withFrameworkFiles(['LICENSE', 'OFL.txt', 'buttons.css', 'buttons.js', 'example.js', 'index.html', 'instrument-sans-variable.woff2']).sort());
     assert.deepEqual(await readFile(new URL('instrument-sans-variable.woff2', packageURL(slug))), font);
     assert.deepEqual(await readFile(new URL('LICENSE', packageURL(slug))), license);
     const html = await load(slug, 'index.html'), css = await load(slug, 'buttons.css'), js = await load(slug, 'buttons.js');

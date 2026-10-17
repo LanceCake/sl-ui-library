@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "variant": "checkboxes-exclusive-none-v11",
+  "kind": "react-adapter",
+  "rendering": "client-widget",
+  "status": "verified-client-widget",
+  "formats": [
+    "html",
+    "css",
+    "javascript",
+    "react",
+    "nextjs"
+  ],
+  "react": "Component.jsx",
+  "nextjs": "NextClient.jsx",
+  "required": [
+    "Component.jsx",
+    "react-controller.mjs",
+    "react-font.mjs",
+    "instrument-sans-variable.woff2"
+  ],
+  "tested": {
+    "react": true,
+    "nextjs": true
+  },
+  "verification": {
+    "controllerSHA256": "ff9d9021cb9fe9e462f817cab790e0e4f055a4620f44c5befeb00c833014a3df",
+    "runtimeSHA256": "559d66dbd2c92a8dbc607045da8760f32cea6e16f1f7f1f85636f96dde3bbc7f",
+    "scope": "Client mount, generic input/activation, focus, host geometry, runtime reduced motion, isolated instances and cleanup in React StrictMode and production Next.js; source control typography/SVG fingerprint at320px.",
+    "limitations": "Not exhaustive application-state or real-backend verification. No meaningful widget SSR. Original default-size constraints and generic activation limits are recorded below.",
+    "notes": []
+  }
+}

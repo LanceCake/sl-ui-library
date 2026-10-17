@@ -5,7 +5,7 @@ import { gzipSync } from 'node:zlib';
 import { categories, components } from './public/catalog-data.js';
 const port = Number(process.env.PORT || 4321);
 const root = new URL('./public/', import.meta.url);
-const types = { html: 'text/html; charset=utf-8', css: 'text/css; charset=utf-8', js: 'text/javascript; charset=utf-8', png: 'image/png', woff2: 'font/woff2', txt: 'text/plain; charset=utf-8', zip: 'application/zip' };
+const types = { html: 'text/html; charset=utf-8', css: 'text/css; charset=utf-8', js: 'text/javascript; charset=utf-8', mjs: 'text/javascript; charset=utf-8', jsx: 'text/plain; charset=utf-8', md: 'text/plain; charset=utf-8', png: 'image/png', woff2: 'font/woff2', txt: 'text/plain; charset=utf-8', zip: 'application/zip' };
 // Explicit local asset allowlist. Menu contours are embedded SVG.
 const allowed = new Set(['index.html', 'library.css', 'library.js', 'component.html', 'category.html', 'catalog.css', 'catalog.js', 'catalog-data.js', 'assets/instrument-sans-variable.woff2']);
 allowed.add('preview-runtime.js');
@@ -13,6 +13,7 @@ for (const category of categories) allowed.add(`catalog-batches/${category.id}.j
 for (const file of ['showcase.html', 'showcase.css', 'showcase.js', 'studio-motion.html', 'studio-motion.css', 'studio-motion.js']) allowed.add(file);
 allowed.add('assets/menu-icons-v1.png');
 allowed.add('preview-data.js');
+allowed.add('catalog-batches/approved-local-91.js');
 for (const file of ['navigation.js', 'view-data.js', 'source-cache.js']) allowed.add(file);
 for (const file of ['index.html', 'copy-button.css', 'copy-button.js', 'review.css', 'preview.js']) allowed.add(`experiments/copy/${file}`);
 for (const file of ['index.html', 'like-button.css', 'like-button.js', 'review.css', 'preview.js']) allowed.add(`experiments/like/${file}`);
@@ -32,7 +33,7 @@ for (const file of ['index.html', 'inputs.css', 'inputs.js', 'review.css', 'prev
 for (const file of ['index.html', 'next.html', 'next.css', 'toggles.css', 'toggles.js', 'review.css', 'preview.js']) allowed.add(`experiments/toggles/${file}`);
 for (const variant of components.flatMap(component => component.variants)) {
   allowed.add(`downloads/matte-${variant}.zip`);
-  for (const file of ['index.html', 'buttons.css', 'buttons.js', 'example.js', 'preview.js', 'overlays.js', 'genie.js', 'next.js', 'pin.js', 'menu-icons-v1.png', 'instrument-sans-variable.woff2', 'OFL.txt', 'LICENSE']) allowed.add(`packages/${variant}/${file}`);
+  for (const file of ['index.html', 'buttons.css', 'buttons.js', 'example.js', 'Component.jsx', 'NextClient.jsx', 'react-controller.mjs', 'react-font.mjs', 'react-example.jsx', 'next-page.jsx', 'framework-usage.md', 'framework.json', 'preview.js', 'overlays.js', 'genie.js', 'next.js', 'pin.js', 'menu-icons-v1.png', 'instrument-sans-variable.woff2', 'OFL.txt', 'LICENSE']) allowed.add(`packages/${variant}/${file}`);
 }
 const cache = new Map();
 createServer(async (req, res) => {

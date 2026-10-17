@@ -1,3 +1,4 @@
+import {withFrameworkFiles} from '../framework-file-contract.mjs';
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile, readdir } from 'node:fs/promises';
@@ -9,7 +10,7 @@ import batch from '../../public/catalog-batches/buttons-basic-5.js';
 import { components as releasedComponents } from '../../public/catalog-data.js';
 
 const project = new URL('../../', import.meta.url);
-const files = ['index.html','buttons.css','buttons.js','example.js','instrument-sans-variable.woff2','OFL.txt','LICENSE'];
+const files = withFrameworkFiles(['index.html','buttons.css','buttons.js','example.js','instrument-sans-variable.woff2','OFL.txt','LICENSE']);
 const expected = [["buttons-close-item-v11","closeState","open","closed","setCloseState"],["buttons-open-external-v11","openState","inline","external","setOpenState"],["buttons-read-toggle-v11","readState","unread","read","setReadState"],["buttons-flag-toggle-v11","flagState","clear","flagged","setFlagState"],["buttons-snooze-toggle-v11","snoozeState","active","snoozed","setSnoozeState"],["buttons-publish-toggle-v11","publishState","draft","published","setPublishState"],["buttons-sync-toggle-v11","syncState","local","synced","setSyncState"],["buttons-report-toggle-v11","reportState","clear","reporting","setReportState"],["buttons-power-toggle-v11","powerState","off","on","setPowerState"],["buttons-group-toggle-v11","groupState","separate","grouped","setGroupState"]];
 const read = (variant, file) => readFile(new URL('public/packages/' + variant + '/' + file, project), 'utf8');
 

@@ -1,6 +1,6 @@
 # Working with SL UI Library
 
-Version 1.1 contains 234 owner-reviewed components and a portable agent toolkit. Use `plugins/sl-ui-library/scripts/library.mjs` to search, inspect and retrieve actual component source. Read `docs/agents.md` for its contract.
+Version 1.2 contains 388 owner-reviewed components (390 export variants) and a portable agent toolkit. Use `plugins/sl-ui-library/scripts/library.mjs` to search, inspect and retrieve actual component source. Read `docs/agents.md` for its contract.
 
 For library edits, `public/packages/` and `public/catalog-data.js` are the source of truth. Run `npm run build` and `npm run check`; commit tracked generated previews and plugin data with source changes. ZIP exports are generated on build/start and ignored by Git. Preserve English interface labels, project-owned inline SVGs, reversible motion, keyboard/focus behavior and reduced-motion support. User input may be Unicode and must remain literal text.
 

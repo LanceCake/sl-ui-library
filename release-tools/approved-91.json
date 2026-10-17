@@ -1,0 +1,972 @@
+{
+  "schemaVersion": 1,
+  "status": "qa-candidate-do-not-release",
+  "approved": [
+    {
+      "localNumber": 1,
+      "batch": "compositions",
+      "key": "accordion",
+      "category": "menus",
+      "id": "matte-menus-compositions-accordion-v11",
+      "variants": [
+        "menus-compositions-accordion-v11"
+      ]
+    },
+    {
+      "localNumber": 2,
+      "batch": "compositions",
+      "key": "select",
+      "category": "selection",
+      "id": "matte-selection-compositions-select-v11",
+      "variants": [
+        "selection-compositions-select-v11"
+      ]
+    },
+    {
+      "localNumber": 3,
+      "batch": "compositions",
+      "key": "multi",
+      "category": "selection",
+      "id": "matte-selection-compositions-multi-v11",
+      "variants": [
+        "selection-compositions-multi-v11"
+      ]
+    },
+    {
+      "localNumber": 4,
+      "batch": "compositions",
+      "key": "files",
+      "category": "inputs",
+      "id": "matte-inputs-compositions-files-v11",
+      "variants": [
+        "inputs-compositions-files-v11"
+      ]
+    },
+    {
+      "localNumber": 5,
+      "batch": "compositions",
+      "key": "wizard",
+      "category": "inputs",
+      "id": "matte-inputs-compositions-wizard-v11",
+      "variants": [
+        "inputs-compositions-wizard-v11"
+      ]
+    },
+    {
+      "localNumber": 6,
+      "batch": "compositions",
+      "key": "nav",
+      "category": "navigation",
+      "id": "matte-navigation-compositions-nav-v11",
+      "variants": [
+        "navigation-compositions-nav-v11"
+      ]
+    },
+    {
+      "localNumber": 7,
+      "batch": "compositions",
+      "key": "gallery",
+      "category": "data-display",
+      "id": "matte-data-display-compositions-gallery-v11",
+      "variants": [
+        "data-display-compositions-gallery-v11"
+      ]
+    },
+    {
+      "localNumber": 8,
+      "batch": "compositions",
+      "key": "reorder",
+      "category": "selection",
+      "id": "matte-selection-compositions-reorder-v11",
+      "variants": [
+        "selection-compositions-reorder-v11"
+      ]
+    },
+    {
+      "localNumber": 9,
+      "batch": "compositions",
+      "key": "comments",
+      "category": "data-display",
+      "id": "matte-data-display-compositions-comments-v11",
+      "variants": [
+        "data-display-compositions-comments-v11"
+      ]
+    },
+    {
+      "localNumber": 10,
+      "batch": "compositions",
+      "key": "cookies",
+      "category": "selection",
+      "id": "matte-selection-compositions-cookies-v11",
+      "variants": [
+        "selection-compositions-cookies-v11"
+      ]
+    },
+    {
+      "localNumber": 11,
+      "batch": "compositions",
+      "key": "search",
+      "category": "inputs",
+      "id": "matte-inputs-compositions-search-v11",
+      "variants": [
+        "inputs-compositions-search-v11"
+      ]
+    },
+    {
+      "localNumber": 12,
+      "batch": "compositions",
+      "key": "tabs",
+      "category": "navigation",
+      "id": "matte-navigation-compositions-tabs-v11",
+      "variants": [
+        "navigation-compositions-tabs-v11"
+      ]
+    },
+    {
+      "localNumber": 13,
+      "batch": "compositions",
+      "key": "filters",
+      "category": "selection",
+      "id": "matte-selection-compositions-filters-v11",
+      "variants": [
+        "selection-compositions-filters-v11"
+      ]
+    },
+    {
+      "localNumber": 14,
+      "batch": "compositions",
+      "key": "featured-card",
+      "category": "data-display",
+      "id": "matte-data-display-compositions-featured-card-v11",
+      "variants": [
+        "data-display-compositions-featured-card-v11"
+      ]
+    },
+    {
+      "localNumber": 15,
+      "batch": "compositions",
+      "key": "contact",
+      "category": "inputs",
+      "id": "matte-inputs-compositions-contact-v11",
+      "variants": [
+        "inputs-compositions-contact-v11"
+      ]
+    },
+    {
+      "localNumber": 16,
+      "batch": "compositions",
+      "key": "newsletter",
+      "category": "inputs",
+      "id": "matte-inputs-compositions-newsletter-v11",
+      "variants": [
+        "inputs-compositions-newsletter-v11"
+      ]
+    },
+    {
+      "localNumber": 17,
+      "batch": "compositions",
+      "key": "cta",
+      "category": "buttons",
+      "id": "matte-buttons-compositions-cta-v11",
+      "variants": [
+        "buttons-compositions-cta-v11"
+      ]
+    },
+    {
+      "localNumber": 18,
+      "batch": "compositions",
+      "key": "features",
+      "category": "checkboxes",
+      "id": "matte-checkboxes-compositions-features-v11",
+      "variants": [
+        "checkboxes-compositions-features-v11"
+      ]
+    },
+    {
+      "localNumber": 19,
+      "batch": "compositions",
+      "key": "announcement",
+      "category": "feedback",
+      "id": "matte-feedback-compositions-announcement-v11",
+      "variants": [
+        "feedback-compositions-announcement-v11"
+      ]
+    },
+    {
+      "localNumber": 20,
+      "batch": "compositions",
+      "key": "footer",
+      "category": "navigation",
+      "id": "matte-navigation-compositions-footer-v11",
+      "variants": [
+        "navigation-compositions-footer-v11"
+      ]
+    },
+    {
+      "localNumber": 21,
+      "batch": "next-twenty",
+      "key": "login",
+      "category": "inputs",
+      "id": "matte-inputs-next-twenty-login-v11",
+      "variants": [
+        "inputs-next-twenty-login-v11"
+      ]
+    },
+    {
+      "localNumber": 22,
+      "batch": "next-twenty",
+      "key": "register",
+      "category": "inputs",
+      "id": "matte-inputs-next-twenty-register-v11",
+      "variants": [
+        "inputs-next-twenty-register-v11"
+      ]
+    },
+    {
+      "localNumber": 23,
+      "batch": "next-twenty",
+      "key": "contact",
+      "category": "inputs",
+      "id": "matte-inputs-next-twenty-contact-v11",
+      "variants": [
+        "inputs-next-twenty-contact-v11"
+      ]
+    },
+    {
+      "localNumber": 24,
+      "batch": "next-twenty",
+      "key": "booking",
+      "category": "inputs",
+      "id": "matte-inputs-next-twenty-booking-v11",
+      "variants": [
+        "inputs-next-twenty-booking-v11"
+      ]
+    },
+    {
+      "localNumber": 25,
+      "batch": "next-twenty",
+      "key": "pricing",
+      "category": "selection",
+      "id": "matte-selection-next-twenty-pricing-v11",
+      "variants": [
+        "selection-next-twenty-pricing-v11"
+      ]
+    },
+    {
+      "localNumber": 26,
+      "batch": "next-twenty",
+      "key": "comparison",
+      "category": "data-display",
+      "id": "matte-data-display-next-twenty-comparison-v11",
+      "variants": [
+        "data-display-next-twenty-comparison-v11"
+      ]
+    },
+    {
+      "localNumber": 27,
+      "batch": "next-twenty",
+      "key": "testimonials",
+      "category": "data-display",
+      "id": "matte-data-display-next-twenty-testimonials-v11",
+      "variants": [
+        "data-display-next-twenty-testimonials-v11"
+      ]
+    },
+    {
+      "localNumber": 28,
+      "batch": "next-twenty",
+      "key": "team",
+      "category": "data-display",
+      "id": "matte-data-display-next-twenty-team-v11",
+      "variants": [
+        "data-display-next-twenty-team-v11"
+      ]
+    },
+    {
+      "localNumber": 29,
+      "batch": "next-twenty",
+      "key": "metrics",
+      "category": "data-display",
+      "id": "matte-data-display-next-twenty-metrics-v11",
+      "variants": [
+        "data-display-next-twenty-metrics-v11"
+      ]
+    },
+    {
+      "localNumber": 30,
+      "batch": "next-twenty",
+      "key": "process",
+      "category": "data-display",
+      "id": "matte-data-display-next-twenty-process-v11",
+      "variants": [
+        "data-display-next-twenty-process-v11"
+      ]
+    },
+    {
+      "localNumber": 31,
+      "batch": "next-twenty",
+      "key": "product",
+      "category": "selection",
+      "id": "matte-selection-next-twenty-product-v11",
+      "variants": [
+        "selection-next-twenty-product-v11"
+      ]
+    },
+    {
+      "localNumber": 32,
+      "batch": "next-twenty",
+      "key": "cart",
+      "category": "selection",
+      "id": "matte-selection-next-twenty-cart-v11",
+      "variants": [
+        "selection-next-twenty-cart-v11"
+      ]
+    },
+    {
+      "localNumber": 33,
+      "batch": "next-twenty",
+      "key": "delivery",
+      "category": "selection",
+      "id": "matte-selection-next-twenty-delivery-v11",
+      "variants": [
+        "selection-next-twenty-delivery-v11"
+      ]
+    },
+    {
+      "localNumber": 34,
+      "batch": "next-twenty",
+      "key": "promo",
+      "category": "inputs",
+      "id": "matte-inputs-next-twenty-promo-v11",
+      "variants": [
+        "inputs-next-twenty-promo-v11"
+      ]
+    },
+    {
+      "localNumber": 35,
+      "batch": "next-twenty",
+      "key": "saved",
+      "category": "data-display",
+      "id": "matte-data-display-next-twenty-saved-v11",
+      "variants": [
+        "data-display-next-twenty-saved-v11"
+      ]
+    },
+    {
+      "localNumber": 36,
+      "batch": "next-twenty",
+      "key": "reader",
+      "category": "navigation",
+      "id": "matte-navigation-next-twenty-reader-v11",
+      "variants": [
+        "navigation-next-twenty-reader-v11"
+      ]
+    },
+    {
+      "localNumber": 37,
+      "batch": "next-twenty",
+      "key": "table",
+      "category": "data-display",
+      "id": "matte-data-display-next-twenty-table-v11",
+      "variants": [
+        "data-display-next-twenty-table-v11"
+      ]
+    },
+    {
+      "localNumber": 38,
+      "batch": "next-twenty",
+      "key": "notifications",
+      "category": "feedback",
+      "id": "matte-feedback-next-twenty-notifications-v11",
+      "variants": [
+        "feedback-next-twenty-notifications-v11"
+      ]
+    },
+    {
+      "localNumber": 39,
+      "batch": "next-twenty",
+      "key": "export",
+      "category": "buttons",
+      "id": "matte-buttons-next-twenty-export-v11",
+      "variants": [
+        "buttons-next-twenty-export-v11"
+      ]
+    },
+    {
+      "localNumber": 40,
+      "batch": "next-twenty",
+      "key": "not-found",
+      "category": "feedback",
+      "id": "matte-feedback-next-twenty-not-found-v11",
+      "variants": [
+        "feedback-next-twenty-not-found-v11"
+      ]
+    },
+    {
+      "localNumber": 41,
+      "batch": "everyday-buttons",
+      "key": "top",
+      "category": "buttons",
+      "id": "matte-buttons-everyday-buttons-top-v11",
+      "variants": [
+        "buttons-everyday-buttons-top-v11"
+      ]
+    },
+    {
+      "localNumber": 42,
+      "batch": "everyday-buttons",
+      "key": "more",
+      "category": "buttons",
+      "id": "matte-buttons-everyday-buttons-more-v11",
+      "variants": [
+        "buttons-everyday-buttons-more-v11"
+      ]
+    },
+    {
+      "localNumber": 43,
+      "batch": "everyday-buttons",
+      "key": "defaults",
+      "category": "buttons",
+      "id": "matte-buttons-everyday-buttons-defaults-v11",
+      "variants": [
+        "buttons-everyday-buttons-defaults-v11"
+      ]
+    },
+    {
+      "localNumber": 44,
+      "batch": "everyday-buttons",
+      "key": "redo",
+      "category": "buttons",
+      "id": "matte-buttons-everyday-buttons-redo-v11",
+      "variants": [
+        "buttons-everyday-buttons-redo-v11"
+      ]
+    },
+    {
+      "localNumber": 45,
+      "batch": "everyday-buttons",
+      "key": "invert",
+      "category": "buttons",
+      "id": "matte-buttons-everyday-buttons-invert-v11",
+      "variants": [
+        "buttons-everyday-buttons-invert-v11"
+      ]
+    },
+    {
+      "localNumber": 46,
+      "batch": "everyday-buttons",
+      "key": "expand-all",
+      "category": "buttons",
+      "id": "matte-buttons-everyday-buttons-expand-all-v11",
+      "variants": [
+        "buttons-everyday-buttons-expand-all-v11"
+      ]
+    },
+    {
+      "localNumber": 47,
+      "batch": "everyday-buttons",
+      "key": "invite",
+      "category": "buttons",
+      "id": "matte-buttons-everyday-buttons-invite-v11",
+      "variants": [
+        "buttons-everyday-buttons-invite-v11"
+      ]
+    },
+    {
+      "localNumber": 48,
+      "batch": "everyday-buttons",
+      "key": "signout",
+      "category": "buttons",
+      "id": "matte-buttons-everyday-buttons-signout-v11",
+      "variants": [
+        "buttons-everyday-buttons-signout-v11"
+      ]
+    },
+    {
+      "localNumber": 49,
+      "batch": "everyday-buttons",
+      "key": "call",
+      "category": "buttons",
+      "id": "matte-buttons-everyday-buttons-call-v11",
+      "variants": [
+        "buttons-everyday-buttons-call-v11"
+      ]
+    },
+    {
+      "localNumber": 50,
+      "batch": "everyday-buttons",
+      "key": "email",
+      "category": "buttons",
+      "id": "matte-buttons-everyday-buttons-email-v11",
+      "variants": [
+        "buttons-everyday-buttons-email-v11"
+      ]
+    },
+    {
+      "localNumber": 51,
+      "batch": "everyday-buttons",
+      "key": "support",
+      "category": "buttons",
+      "id": "matte-buttons-everyday-buttons-support-v11",
+      "variants": [
+        "buttons-everyday-buttons-support-v11"
+      ]
+    },
+    {
+      "localNumber": 52,
+      "batch": "everyday-buttons",
+      "key": "directions",
+      "category": "buttons",
+      "id": "matte-buttons-everyday-buttons-directions-v11",
+      "variants": [
+        "buttons-everyday-buttons-directions-v11"
+      ]
+    },
+    {
+      "localNumber": 53,
+      "batch": "everyday-buttons",
+      "key": "calendar",
+      "category": "buttons",
+      "id": "matte-buttons-everyday-buttons-calendar-v11",
+      "variants": [
+        "buttons-everyday-buttons-calendar-v11"
+      ]
+    },
+    {
+      "localNumber": 56,
+      "batch": "daily-controls",
+      "key": "currency",
+      "category": "selection",
+      "id": "matte-selection-daily-controls-currency-v11",
+      "variants": [
+        "selection-daily-controls-currency-v11"
+      ]
+    },
+    {
+      "localNumber": 57,
+      "batch": "daily-controls",
+      "key": "payment",
+      "category": "selection",
+      "id": "matte-selection-daily-controls-payment-v11",
+      "variants": [
+        "selection-daily-controls-payment-v11"
+      ]
+    },
+    {
+      "localNumber": 58,
+      "batch": "daily-controls",
+      "key": "signature",
+      "category": "inputs",
+      "id": "matte-inputs-daily-controls-signature-v11",
+      "variants": [
+        "inputs-daily-controls-signature-v11"
+      ]
+    },
+    {
+      "localNumber": 59,
+      "batch": "daily-controls",
+      "key": "poll",
+      "category": "selection",
+      "id": "matte-selection-daily-controls-poll-v11",
+      "variants": [
+        "selection-daily-controls-poll-v11"
+      ]
+    },
+    {
+      "localNumber": 60,
+      "batch": "daily-controls",
+      "key": "partners",
+      "category": "data-display",
+      "id": "matte-data-display-daily-controls-partners-v11",
+      "variants": [
+        "data-display-daily-controls-partners-v11"
+      ]
+    },
+    {
+      "localNumber": 61,
+      "batch": "daily-controls",
+      "key": "hours",
+      "category": "data-display",
+      "id": "matte-data-display-daily-controls-hours-v11",
+      "variants": [
+        "data-display-daily-controls-hours-v11"
+      ]
+    },
+    {
+      "localNumber": 62,
+      "batch": "daily-controls",
+      "key": "splitter",
+      "category": "sliders",
+      "id": "matte-sliders-daily-controls-splitter-v11",
+      "variants": [
+        "sliders-daily-controls-splitter-v11"
+      ]
+    },
+    {
+      "localNumber": 63,
+      "batch": "daily-controls",
+      "key": "tracking",
+      "category": "data-display",
+      "id": "matte-data-display-daily-controls-tracking-v11",
+      "variants": [
+        "data-display-daily-controls-tracking-v11"
+      ]
+    },
+    {
+      "localNumber": 64,
+      "batch": "account-core",
+      "key": "profile",
+      "category": "inputs",
+      "id": "matte-inputs-account-core-profile-v11",
+      "variants": [
+        "inputs-account-core-profile-v11"
+      ]
+    },
+    {
+      "localNumber": 65,
+      "batch": "account-core",
+      "key": "contact",
+      "category": "inputs",
+      "id": "matte-inputs-account-core-contact-v11",
+      "variants": [
+        "inputs-account-core-contact-v11"
+      ]
+    },
+    {
+      "localNumber": 66,
+      "batch": "account-core",
+      "key": "password",
+      "category": "inputs",
+      "id": "matte-inputs-account-core-password-v11",
+      "variants": [
+        "inputs-account-core-password-v11"
+      ]
+    },
+    {
+      "localNumber": 67,
+      "batch": "account-core",
+      "key": "sessions",
+      "category": "data-display",
+      "id": "matte-data-display-account-core-sessions-v11",
+      "variants": [
+        "data-display-account-core-sessions-v11"
+      ]
+    },
+    {
+      "localNumber": 68,
+      "batch": "account-core",
+      "key": "connections",
+      "category": "selection",
+      "id": "matte-selection-account-core-connections-v11",
+      "variants": [
+        "selection-account-core-connections-v11"
+      ]
+    },
+    {
+      "localNumber": 69,
+      "batch": "account-core",
+      "key": "twofactor",
+      "category": "selection",
+      "id": "matte-selection-account-core-twofactor-v11",
+      "variants": [
+        "selection-account-core-twofactor-v11"
+      ]
+    },
+    {
+      "localNumber": 70,
+      "batch": "account-core",
+      "key": "recovery",
+      "category": "data-display",
+      "id": "matte-data-display-account-core-recovery-v11",
+      "variants": [
+        "data-display-account-core-recovery-v11"
+      ]
+    },
+    {
+      "localNumber": 71,
+      "batch": "account-core",
+      "key": "passkeys",
+      "category": "data-display",
+      "id": "matte-data-display-account-core-passkeys-v11",
+      "variants": [
+        "data-display-account-core-passkeys-v11"
+      ]
+    },
+    {
+      "localNumber": 72,
+      "batch": "account-core",
+      "key": "visibility",
+      "category": "selection",
+      "id": "matte-selection-account-core-visibility-v11",
+      "variants": [
+        "selection-account-core-visibility-v11"
+      ]
+    },
+    {
+      "localNumber": 73,
+      "batch": "account-core",
+      "key": "addresses",
+      "category": "inputs",
+      "id": "matte-inputs-account-core-addresses-v11",
+      "variants": [
+        "inputs-account-core-addresses-v11"
+      ]
+    },
+    {
+      "localNumber": 74,
+      "batch": "account-services",
+      "key": "communications",
+      "category": "selection",
+      "id": "matte-selection-account-services-communications-v11",
+      "variants": [
+        "selection-account-services-communications-v11"
+      ]
+    },
+    {
+      "localNumber": 75,
+      "batch": "account-services",
+      "key": "security",
+      "category": "data-display",
+      "id": "matte-data-display-account-services-security-v11",
+      "variants": [
+        "data-display-account-services-security-v11"
+      ]
+    },
+    {
+      "localNumber": 76,
+      "batch": "account-services",
+      "key": "recipient",
+      "category": "inputs",
+      "id": "matte-inputs-account-services-recipient-v11",
+      "variants": [
+        "inputs-account-services-recipient-v11"
+      ]
+    },
+    {
+      "localNumber": 77,
+      "batch": "account-services",
+      "key": "methods",
+      "category": "selection",
+      "id": "matte-selection-account-services-methods-v11",
+      "variants": [
+        "selection-account-services-methods-v11"
+      ]
+    },
+    {
+      "localNumber": 78,
+      "batch": "account-services",
+      "key": "documents",
+      "category": "data-display",
+      "id": "matte-data-display-account-services-documents-v11",
+      "variants": [
+        "data-display-account-services-documents-v11"
+      ]
+    },
+    {
+      "localNumber": 79,
+      "batch": "account-services",
+      "key": "subscription",
+      "category": "selection",
+      "id": "matte-selection-account-services-subscription-v11",
+      "variants": [
+        "selection-account-services-subscription-v11"
+      ]
+    },
+    {
+      "localNumber": 80,
+      "batch": "account-services",
+      "key": "orders",
+      "category": "data-display",
+      "id": "matte-data-display-account-services-orders-v11",
+      "variants": [
+        "data-display-account-services-orders-v11"
+      ]
+    },
+    {
+      "localNumber": 81,
+      "batch": "account-services",
+      "key": "returns",
+      "category": "inputs",
+      "id": "matte-inputs-account-services-returns-v11",
+      "variants": [
+        "inputs-account-services-returns-v11"
+      ]
+    },
+    {
+      "localNumber": 82,
+      "batch": "account-services",
+      "key": "tickets",
+      "category": "inputs",
+      "id": "matte-inputs-account-services-tickets-v11",
+      "variants": [
+        "inputs-account-services-tickets-v11"
+      ]
+    },
+    {
+      "localNumber": 83,
+      "batch": "account-services",
+      "key": "exports",
+      "category": "buttons",
+      "id": "matte-buttons-account-services-exports-v11",
+      "variants": [
+        "buttons-account-services-exports-v11"
+      ]
+    },
+    {
+      "localNumber": 84,
+      "batch": "account-extensions",
+      "key": "region",
+      "category": "selection",
+      "id": "matte-selection-account-extensions-region-v11",
+      "variants": [
+        "selection-account-extensions-region-v11"
+      ]
+    },
+    {
+      "localNumber": 85,
+      "batch": "account-extensions",
+      "key": "balance",
+      "category": "data-display",
+      "id": "matte-data-display-account-extensions-balance-v11",
+      "variants": [
+        "data-display-account-extensions-balance-v11"
+      ]
+    },
+    {
+      "localNumber": 86,
+      "batch": "account-extensions",
+      "key": "rewards",
+      "category": "selection",
+      "id": "matte-selection-account-extensions-rewards-v11",
+      "variants": [
+        "selection-account-extensions-rewards-v11"
+      ]
+    },
+    {
+      "localNumber": 87,
+      "batch": "account-extensions",
+      "key": "referrals",
+      "category": "data-display",
+      "id": "matte-data-display-account-extensions-referrals-v11",
+      "variants": [
+        "data-display-account-extensions-referrals-v11"
+      ]
+    },
+    {
+      "localNumber": 88,
+      "batch": "account-extensions",
+      "key": "licenses",
+      "category": "data-display",
+      "id": "matte-data-display-account-extensions-licenses-v11",
+      "variants": [
+        "data-display-account-extensions-licenses-v11"
+      ]
+    },
+    {
+      "localNumber": 89,
+      "batch": "account-extensions",
+      "key": "appointments",
+      "category": "inputs",
+      "id": "matte-inputs-account-extensions-appointments-v11",
+      "variants": [
+        "inputs-account-extensions-appointments-v11"
+      ]
+    },
+    {
+      "localNumber": 90,
+      "batch": "account-extensions",
+      "key": "reviews",
+      "category": "inputs",
+      "id": "matte-inputs-account-extensions-reviews-v11",
+      "variants": [
+        "inputs-account-extensions-reviews-v11"
+      ]
+    },
+    {
+      "localNumber": 91,
+      "batch": "account-extensions",
+      "key": "members",
+      "category": "selection",
+      "id": "matte-selection-account-extensions-members-v11",
+      "variants": [
+        "selection-account-extensions-members-v11"
+      ]
+    },
+    {
+      "localNumber": 92,
+      "batch": "account-extensions",
+      "key": "ownership",
+      "category": "inputs",
+      "id": "matte-inputs-account-extensions-ownership-v11",
+      "variants": [
+        "inputs-account-extensions-ownership-v11"
+      ]
+    },
+    {
+      "localNumber": 93,
+      "batch": "account-extensions",
+      "key": "lifecycle",
+      "category": "selection",
+      "id": "matte-selection-account-extensions-lifecycle-v11",
+      "variants": [
+        "selection-account-extensions-lifecycle-v11"
+      ]
+    }
+  ],
+  "sources": {
+    "experiments/library-compositions-ru/app.js": "cd8092fec548d2f6637a1a2b48597825830988f6eb1a8b6852bd6138e629007d",
+    "experiments/library-compositions-ru/dictionary.js": "1e89fb46c6e91c1f132c3a16a0473ac2fae681969e168fa9fdb147e9d1c6e7f7",
+    "experiments/library-compositions-ru/essentials.js": "e06657478cb6685dc6a3741cec5db751582d6fabcd600487f171bcb62864aad4",
+    "experiments/library-compositions-ru/motion-tokens.js": "fc6ac57a2d86a8d5ce02b174a3bf88f6c9df004a4c2273122e0f6ed87a2d76ee",
+    "experiments/library-compositions-ru/popular.js": "765d284281cab16beacba520f1e369bb30207f358515a55907e606a4de825dee",
+    "experiments/library-compositions-ru/source-host.js": "c9edd1326b4606b7dc56ed51ea32a5931eb5ec5201ee67f36b326c3003122a20",
+    "experiments/library-compositions-ru/styles.css": "d832cddb2f399889ebed06bd5c10ca38fd4da8eb2ffba9174da6a7b8923e9690",
+    "experiments/library-next-twenty-ru/blocks.js": "ab6f8be9d4dbd2c80b8b03d0273a54ef421bc7c72a0c5e4782e399f587cf85c5",
+    "experiments/library-next-twenty-ru/app.js": "2b73cebd7149f6f63cc5f69e7fe4fb4d3fefcc8eca08a9993521bed27689002d",
+    "experiments/library-next-twenty-ru/commerce.js": "d247f6a2d0d23a7a02a3a54673ad882a8b25b51a41b0f813287f74ad0b8ff64f",
+    "experiments/library-next-twenty-ru/forms.js": "b30d43543576a32eb40000ab234cf09f4fd32b1bdaa99186b949ea6f62fcfcc2",
+    "experiments/library-next-twenty-ru/manifest.js": "343de7676a821be4fb7ffe17c2bf06c66775a1799bea7c3057d28b5dd52957f8",
+    "experiments/library-next-twenty-ru/styles.css": "cb8caf77df4e67d6eaeaf5d3f2961c9188a5c6e68a06669675fdc13e258c0547",
+    "experiments/library-next-twenty-ru/tools.js": "e27f8539aba32cf3e31b3a4757cdead9777e1a2ff1f6f0d2a0fa38b1712496bb",
+    "experiments/library-next-twenty-ru/ui.js": "5c57c898e91cf9c7796c451240eedd44be8122f8ba102e5387b3364ff489f833",
+    "experiments/everyday-buttons-ru/button.js": "2d326885e84e37ec0e9f51d267ef37b2c7116c12197792c509a926ef87e87e25",
+    "experiments/everyday-buttons-ru/examples.js": "d66d13f647a78aa88124c3634353ac968c36babc1bed75b1455749cb67694bd6",
+    "experiments/everyday-buttons-ru/icons.js": "ef73678bae3c3cf396f5fbe646bbcc319c9f8f42d5061cbe02ed02d71f03426e",
+    "experiments/everyday-buttons-ru/invite-motion.js": "70e51d9cfe47a166666a3dda8fd53a790069164008be94dbaa2dc9d82cc27a51",
+    "experiments/everyday-buttons-ru/manifest.js": "9620465c37ca0af6cbcae1188c7f4412ff4861d26008c45d76f520ba09f941e4",
+    "experiments/everyday-buttons-ru/motion-tokens.js": "6c96fa9b33b37b169a6b4184524370e146fb2994267c3b6e3734dbc765349ae0",
+    "experiments/everyday-buttons-ru/motion.js": "8ecc9583dcd69794d2b6eeb14208d4e8fcbd1d823c70ac4ff8eed94882e11286",
+    "experiments/everyday-buttons-ru/styles.css": "42e5d4ba28f19472b67bb32327e187eaf243256b7f41fa0fb7e8e8632fc9d2b4",
+    "experiments/daily-controls-ru/actions.js": "63aaaae4fa4e866d9e93964f804d7c67f08072cd44a1586b3f3832d03384bc78",
+    "experiments/daily-controls-ru/blocks.js": "e4a138c3ef92c695dc57af35021e1985d3473919366cddaf09c8a4a0cd7edd6a",
+    "experiments/daily-controls-ru/choices.js": "80bb7db381e6726f66e05af1b9ea2e57f12794639210190169d062599aa78491",
+    "experiments/daily-controls-ru/helpers.js": "68bfdc6e6967a3b8f31c5e0475c7d274d2bc078ea992640b1e3910382cc6752b",
+    "experiments/daily-controls-ru/manifest.js": "e016af9250938204d85f7b78dd4bb971311fd29029889b8000d6151631674e9d",
+    "experiments/daily-controls-ru/motion.tokens.json": "2fc9c5afe6fe3322df96aaa86ffdb39b1b530032e351c855cb2a1d1683528ab5",
+    "experiments/daily-controls-ru/styles.css": "e06159731576caae0125bc17337308751e120a73792bfb16852ceb82f84a607a",
+    "experiments/account-core-ru/access.js": "dd5b2727176d025d4d100ec7832655ae4df0dc7164cac55be83c5e7dfb0badae",
+    "experiments/account-core-ru/comfort.css": "f754c5a34514816520c742f167e3547f9e1e3609314e33df14f9ddb2c1cc44c3",
+    "experiments/account-core-ru/comfort.js": "1804652affa339a2ad42381821742882ac58dfadb9428cd3efe672a348623380",
+    "experiments/account-core-ru/manifest.js": "586c997ff21ebaf3886d61d1d1fe91c49dbd39935a7ace957eec5db2ee91e245",
+    "experiments/account-core-ru/motion.tokens.json": "564881bbb57b58c1dc24a5f6c8d577f5e1ea73c277edd1dbae73c1fcca0682df",
+    "experiments/account-core-ru/privacy.js": "f5348534313ab5111317f8dab29e7f75acab8eee0b98b54ee11200ecbe0228f5",
+    "experiments/account-core-ru/profile.js": "70e8c2ca52722111887e336b7b37358c07303c3600069f895c641c9973331224",
+    "experiments/account-core-ru/runtime.js": "cff382e498cb6dafe4b86a74e68b0fb4b95e078fc6776b477cd0fd64630a709f",
+    "experiments/account-core-ru/styles.css": "a6f7c8bc27c49cd000085699757c0cd7330888d8d80a491bdf9a8118c4563a39",
+    "experiments/account-services-ru/billing.js": "411139df7bd2650d77209eaaf90f843218e4353a477f025e4b1020241480c435",
+    "experiments/account-services-ru/data.js": "344e0a68688e658808dec78ccb38a9891043a008f5870328b71785ec5cbff965",
+    "experiments/account-services-ru/history.js": "79c7380a8c85d197f796c5729f436199a3259fd0e097efeec2fd4c5df6d50de3",
+    "experiments/account-services-ru/manifest.js": "b3ef004cd46889cd497e95256dca8e020716d3c39e1bab518c8ea593a47c9fce",
+    "experiments/account-services-ru/preferences.js": "af2b2763f6fdfff4a6fcc246431e53e24b257ba9853465b4c61a2dbef597c750",
+    "experiments/account-services-ru/styles.css": "aca0dc245b631e1f74477bfd540064dc9e6362c9d8c91d1a5a3605d5d36f3820",
+    "experiments/account-services-ru/support.js": "12f7ab9f5df300722c691b96ca2fecb14e68b166765d64085e6bcf9c8fa1d529",
+    "experiments/account-services-ru/ui.js": "c85d96c69504c62f2cd4b42542300645df90b6410c8412125dc05aac5dbb52e7",
+    "experiments/account-extensions-ru/data.js": "e6d8c3b2735f08406a56872ae196e0d25fa3f24edfa76afe1608c2d821818d10",
+    "experiments/account-extensions-ru/manifest.js": "fd8cb754407287b3aee42ec98320af660b5251f97bf199da19e7ec2a32d44c6e",
+    "experiments/account-extensions-ru/organization.js": "2c71f2222ba80d872a27eaa2840fb33d22dbe9c7c81e3db93ed1eef6a205492e",
+    "experiments/account-extensions-ru/resources.js": "cf4bb9c98beb35513ce0f7c8760e43ec3e3aa029da3714e77d195bd776b201d7",
+    "experiments/account-extensions-ru/styles.css": "647f28c6b8114c45efa7d8dc8189c3ff27dac74dd5c6e8a6a1644e7fba2b6646",
+    "experiments/account-extensions-ru/value.js": "e20c7085dc30d0d51eb2b55f103ef7541b99e742bc601b109b6fef22f9705055",
+    "public/draft-ten-ru.js": "c76585b914e4ca1a39301aea40519af1b15261bec129239bd1833ab1f8fb1c5f"
+  }
+}

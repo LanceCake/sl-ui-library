@@ -1,3 +1,4 @@
+import {withFrameworkFiles} from '../framework-file-contract.mjs';
 import test, {before, after} from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile,readdir} from 'node:fs/promises';
@@ -8,7 +9,7 @@ import {createHash} from 'node:crypto';
 import batch from '../../public/catalog-batches/overlays.js';
 
 const packageRoot=new URL('../../public/packages/',import.meta.url);
-const required=['LICENSE','OFL.txt','buttons.css','buttons.js','example.js','index.html','instrument-sans-variable.woff2'];
+const required=withFrameworkFiles(['LICENSE','OFL.txt','buttons.css','buttons.js','example.js','index.html','instrument-sans-variable.woff2']);
 const sources=new Map();
 const hash=bytes=>createHash('sha256').update(bytes).digest('hex');
 

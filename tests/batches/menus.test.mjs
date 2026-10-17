@@ -1,3 +1,4 @@
+import {withFrameworkFiles} from '../framework-file-contract.mjs';
 import { test, after } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile, readdir } from 'node:fs/promises';
@@ -31,7 +32,7 @@ test('menus manifest has exactly ten distinct complete entries', () => {
 });
 
 for (const slug of slugs) test(`${slug}: portable package, compiler and literal-text contract`, async () => {
-  assert.deepEqual((await readdir(folder(slug))).sort(), ['LICENSE', 'OFL.txt', 'buttons.css', 'buttons.js', 'example.js', 'index.html', 'instrument-sans-variable.woff2'].sort());
+  assert.deepEqual((await readdir(folder(slug))).sort(), withFrameworkFiles(['LICENSE', 'OFL.txt', 'buttons.css', 'buttons.js', 'example.js', 'index.html', 'instrument-sans-variable.woff2']).sort());
   for (const asset of ['instrument-sans-variable.woff2', 'OFL.txt']) {
     const hash = bytes => createHash('sha256').update(bytes).digest('hex');
     assert.equal(hash(await readFile(new URL(asset, folder(slug)))), hash(await readFile(new URL(`public/packages/assignee-menu/${asset}`, root))));

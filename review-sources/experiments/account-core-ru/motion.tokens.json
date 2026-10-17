@@ -1,0 +1,1 @@
+{"duration":{"short2":{"$type":"duration","$value":"100ms"},"short4":{"$type":"duration","$value":"200ms"},"medium2":{"$type":"duration","$value":"300ms"}},"easing":{"settle":{"$type":"cubicBezier","$value":[0.22,1,0.36,1]}}}

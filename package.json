@@ -1,11 +1,13 @@
 {
   "name": "sl-ui-library",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "license": "MIT",
   "private": true,
   "type": "module",
-  "description": "Interactive UI components and an agent toolkit. Static HTML, CSS and JavaScript.",
-  "engines": { "node": ">=22" },
+  "description": "Interactive UI components and an agent toolkit. HTML, CSS and JavaScript with additive React and Next.js adapters.",
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "prestart": "node build.mjs",
     "start": "node serve.mjs",

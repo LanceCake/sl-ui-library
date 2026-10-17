@@ -77,10 +77,16 @@ h1 { margin: 0; font-size: clamp(44px, 4.17vw, 64px); line-height: 1.1; font-wei
 .workbench-body:has(sl-preview:is([variant$="-overlay"], [variant$="-feedback"])) { --preview-height: 430px; }
 .workbench-body:has(sl-preview:is([variant$="-display"], [variant$="-v11"])) { --preview-height: 510px; }
 .workbench-body:has(sl-preview[variant$="-navigation"]) { --preview-height: 360px; }
+/* A content preview and its heading reserve their own rows during the same
+   layout as source wrapping. Code must not contribute its full source height. */
+.workbench-body:has(sl-preview[data-preview-sizing="content"]) { height: auto; }
+.preview-panel:has(> sl-preview[data-preview-sizing="content"]) { height: auto; grid-template-rows: minmax(64px, auto) auto; align-content: start; }
+.preview-panel > #component-preview[data-preview-sizing="content"], .preview-panel > sl-preview[data-preview-sizing="content"] { height: auto; min-height: var(--preview-height); }
+.workbench-body:has(sl-preview[data-preview-sizing="content"]) > .code-panel { contain: size; }
 .code-panel { position: relative; display: flex; flex-direction: column; min-width: 0; min-height: 0; background: radial-gradient(ellipse at 100% 100%, #1c1e1f40, transparent 80%), var(--recess); border-left: 1px solid var(--edge); }
-.code-toolbar { height: 65px; flex: none; display: flex; align-items: center; padding: 0 13px 0 10px; border-bottom: 1px solid var(--edge-soft); background: var(--panel-fill); gap: 14px; }
-.file-tabs { display: flex; height: 100%; align-items: stretch; }
-.file-tabs button { position: relative; background: transparent; color: var(--secondary); border: 0; padding: 0 22px; font-size: 18px; font-weight: 500; }
+.code-toolbar { min-height: 65px; flex: none; display: flex; flex-wrap: wrap; align-items: center; padding: 8px 13px 8px 10px; border-bottom: 1px solid var(--edge-soft); background: var(--panel-fill); gap: 8px; }
+.file-tabs { display: flex; flex: 1 1 320px; flex-wrap: wrap; min-width: 0; min-height: 48px; align-items: stretch; }
+.file-tabs button { position: relative; flex: 1 0 auto; min-width: 44px; min-height: 44px; white-space: nowrap; background: transparent; color: var(--secondary); border: 0; padding: 0 10px; font-size: 16px; font-weight: 500; }
 .file-tabs button[aria-selected="true"] { color: #f8f9fa; font-weight: 650; }
 .file-tabs button::after { content: ''; position: absolute; bottom: 0; left: 4px; right: 4px; height: 2px; background: #e8ecef; opacity: 0; transition: opacity 180ms var(--ease); }
 .file-tabs button[aria-selected="true"]::after { opacity: 1; }
@@ -89,6 +95,12 @@ h1 { margin: 0; font-size: clamp(44px, 4.17vw, 64px); line-height: 1.1; font-wei
 .copy-button { flex: none; margin-left: auto; padding: 9px 14px; min-height: 46px; }
 .copy-button svg { width: 22px; height: 24px; }
 .copy-button span { min-width: 78px; text-align: center; }
+.source-context { flex: none; min-width: 0; padding: 10px 16px; color: var(--secondary); font-size: 12px; line-height: 1.5; overflow-wrap: anywhere; border-bottom: 1px solid var(--edge-soft); }
+.source-context > code { color: var(--text); }
+.source-context p { margin: 8px 0; }
+.source-context label { display: block; margin-bottom: 4px; }
+.source-context select { width: 100%; min-width: 0; min-height: 40px; padding: 6px 10px; border: 1px solid var(--edge); border-radius: 8px; background: var(--surface); color: var(--text); font: inherit; }
+.source-context select:focus-visible { outline: 2px solid #e3e8eb; outline-offset: 2px; }
 #source-panel { display: flex; flex: 1; min-height: 0; overflow: auto; scrollbar-width: thin; scrollbar-color: #454849 var(--recess); }
 #source-panel:focus-visible { outline-offset: -4px; }
 #source-panel pre { margin: 0; padding-block: 28px; font-family: Consolas, 'Liberation Mono', monospace; font-size: clamp(13px, 1.235vw, 19px); line-height: 1.65; font-weight: 400; tab-size: 2; }
@@ -112,7 +124,7 @@ dialog::backdrop { background: #020303cc; backdrop-filter: blur(7px); }
 .usage-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; margin-top: 28px; padding-top: 24px; border-top: 1px solid #ffffff12; }
 .text-button { border: 0; background: none; padding: 12px 0; font-size: 15px; color: var(--secondary); text-decoration: underline; text-underline-offset: 5px; }
 @media (max-width: 1400px) {
-  .file-tabs button { font-size: 16px; padding-inline: 16px; }
+  .file-tabs button { font-size: 15px; padding-inline: 8px; }
   .variant-controls { width: 330px; }
   .download-button { width: 174px; font-size: 18px; }
   .workbench-actions { gap: 22px; }
@@ -127,7 +139,7 @@ dialog::backdrop { background: #020303cc; backdrop-filter: blur(7px); }
   .variant-controls { height: 48px; }
 }
 @media (max-width: 1100px) {
-  .file-tabs button { padding-inline: 12px; font-size: 15px; }
+  .file-tabs button { padding-inline: 6px; font-size: 14px; }
   .code-toolbar { padding-inline: 4px 10px; gap: 8px; }
   .copy-button { gap: 8px; font-size: 14px; padding-inline: 10px; }
   .copy-button span { min-width: 66px; }
@@ -146,7 +158,8 @@ dialog::backdrop { background: #020303cc; backdrop-filter: blur(7px); }
   .variant-controls { flex: 1; min-width: 240px; }
   .workbench-actions { margin-left: auto; }
   .reset-button { padding: 0 18px; font-size: 16px; }
-  .file-tabs button { padding-inline: 18px; font-size: 16px; }
+  .file-tabs button { padding-inline: 8px; font-size: 15px; }
+  .code-panel:has(#framework-source:not([hidden])) { height: 540px; }
 }
 @media (max-width: 520px) {
   .header-inner { padding-inline: 22px; }
@@ -165,8 +178,8 @@ dialog::backdrop { background: #020303cc; backdrop-filter: blur(7px); }
   .download-button { width: auto; min-height: 46px; font-size: 16px; }
   .preview-panel { height: 300px; }
   .preview-panel h2 { font-size: 19px; }
-  .code-toolbar { height: 60px; }
-  .file-tabs button { font-size: 13px; padding-inline: 10px; }
+  .code-toolbar { min-height: 60px; }
+  .file-tabs button { font-size: 13px; padding-inline: 4px; }
   .copy-button { gap: 5px; min-height: 40px; font-size: 12px; padding-inline: 8px; }
   .copy-button span { min-width: 60px; }
   .copy-button svg { width: 17px; height: 19px; }

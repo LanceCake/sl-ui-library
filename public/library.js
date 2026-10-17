@@ -51,8 +51,13 @@ export function mountComponent(root, url) {
   const status = root.querySelector('#copy-status');
   const dialog = root.querySelector('#usage-dialog');
   const tabs = [...root.querySelectorAll('[role="tab"]')];
+  const filename = root.querySelector('#source-filename');
+  const frameworkSource = root.querySelector('#framework-source');
+  const companion = root.querySelector('#source-file');
+  const companionFiles = new Set(['react-controller.mjs', 'react-font.mjs', 'framework-usage.md', 'framework.json', 'react-example.jsx', 'next-page.jsx']);
   let variant = component.variants[0];
   let file = 'example.js';
+  let tabFile = file;
   let source = '';
   let requestId = 0;
   let copyTimer;
@@ -70,6 +75,8 @@ export function mountComponent(root, url) {
   async function loadCode() {
     const id = ++requestId;
     source = '';
+    code.textContent = 'Loading source…';
+    numbers.textContent = '1';
     clearTimeout(copyTimer);
     copy.disabled = true;
     copyLabel.textContent = 'Copy code';
@@ -94,16 +101,24 @@ export function mountComponent(root, url) {
   }
 
   function selectFile(next) {
+    if (!tabs.some(tab => tab.dataset.file === next) && next !== 'buttons.js' && !companionFiles.has(next)) return;
     file = next;
-    const tabFile = next === 'buttons.js' ? 'example.js' : next;
+    if (!companionFiles.has(next)) tabFile = next === 'buttons.js' ? 'example.js' : next;
+    filename.textContent = file;
+    frameworkSource.hidden = !['Component.jsx', 'NextClient.jsx'].includes(tabFile);
+    companion.value = companionFiles.has(file) ? file : '';
     for (const tab of tabs) {
       const active = tab.dataset.file === tabFile;
       tab.setAttribute('aria-selected', String(active));
       tab.tabIndex = active ? 0 : -1;
-      if (active) panel.setAttribute('aria-labelledby', tab.id);
+      if (active) panel.setAttribute('aria-labelledby', tab.id + ' source-filename');
     }
     loadCode();
   }
+  companion.addEventListener('change', () => {
+    if (companionFiles.has(companion.value)) selectFile(companion.value);
+    else companion.value = companionFiles.has(file) ? file : '';
+  });
   for (const tab of tabs) {
     tab.addEventListener('click', () => selectFile(tab.dataset.file));
     tab.addEventListener('keydown', event => {

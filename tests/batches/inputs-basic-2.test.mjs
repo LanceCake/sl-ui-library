@@ -1,3 +1,4 @@
+import {withFrameworkFiles} from '../framework-file-contract.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile, stat } from 'node:fs/promises';
@@ -8,7 +9,7 @@ import batch from '../../public/catalog-batches/inputs-basic-2.js';
 
 const projectRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 const publicRoot = resolve(projectRoot, 'public');
-const required = ['index.html', 'buttons.css', 'buttons.js', 'example.js', 'instrument-sans-variable.woff2', 'OFL.txt', 'LICENSE'];
+const required = withFrameworkFiles(['index.html', 'buttons.css', 'buttons.js', 'example.js', 'instrument-sans-variable.woff2', 'OFL.txt', 'LICENSE']);
 const expected = ['username', 'slug', 'percentage', 'coordinates', 'semantic-version', 'ipv4', 'card-number', 'shortcut', 'search-replace', 'formula'];
 
 test('second Inputs batch has ten distinct review entries', () => {

@@ -1,3 +1,4 @@
+import {withFrameworkFiles} from '../framework-file-contract.mjs';
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile, readdir } from 'node:fs/promises';
@@ -126,7 +127,7 @@ test('exactly ten complete, self-contained and compiler-compatible packages', as
   for (const item of batch) {
     const variant = item.variants[0], slug = variant.replace(/^feedback-|-v11$/g, '');
     assert.equal(item.category, 'feedback'); assert.equal(item.id, 'matte-' + variant); assert.equal(item.usage.length, 3);
-    assert.deepEqual((await readdir(new URL(variant+'/', packageRoot))).sort(), ['LICENSE','OFL.txt','buttons.css','buttons.js','example.js','index.html','instrument-sans-variable.woff2'].sort());
+    assert.deepEqual((await readdir(new URL(variant+'/', packageRoot))).sort(), withFrameworkFiles(['LICENSE','OFL.txt','buttons.css','buttons.js','example.js','index.html','instrument-sans-variable.woff2']).sort());
     const html = await read(slug,'index.html'), js = await read(slug,'buttons.js'), css = await read(slug,'buttons.css');
     assert.match(html, /<html lang="en">/); assert.equal((html.match(/class="sl-component"/g) ?? []).length,1);
     assert.match(html, /data-kind="feedback-/); assert.match(html, /<script src="\.\/buttons.js" defer><\/script>/);

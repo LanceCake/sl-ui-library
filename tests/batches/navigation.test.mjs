@@ -1,3 +1,4 @@
+import {withFrameworkFiles} from '../framework-file-contract.mjs';
 import { test, before, after } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile, readdir, mkdir } from 'node:fs/promises';
@@ -10,7 +11,7 @@ import { Script } from 'node:vm';
 import batch from '../../public/catalog-batches/navigation.js';
 
 const publicRoot = fileURLToPath(new URL('../../public/', import.meta.url));
-const required = ['LICENSE', 'OFL.txt', 'buttons.css', 'buttons.js', 'example.js', 'index.html', 'instrument-sans-variable.woff2'].sort();
+const required = withFrameworkFiles(['LICENSE', 'OFL.txt', 'buttons.css', 'buttons.js', 'example.js', 'index.html', 'instrument-sans-variable.woff2']).sort();
 const hash = bytes => createHash('sha256').update(bytes).digest('hex');
 const font = await readFile(join(publicRoot, 'packages/tabs-navigation/instrument-sans-variable.woff2'));
 const license = await readFile(new URL('../../LICENSE', import.meta.url), 'utf8');

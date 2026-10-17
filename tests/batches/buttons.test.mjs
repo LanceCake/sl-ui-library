@@ -1,3 +1,4 @@
+import {withFrameworkFiles} from '../framework-file-contract.mjs';
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile, readdir, mkdir } from 'node:fs/promises';
@@ -11,7 +12,7 @@ import batch from '../../public/catalog-batches/buttons.js';
 
 const project = new URL('../../', import.meta.url);
 const read = (variant, file) => readFile(new URL(`public/packages/${variant}/${file}`, project), 'utf8');
-const names = ['index.html', 'buttons.css', 'buttons.js', 'example.js', 'instrument-sans-variable.woff2', 'OFL.txt', 'LICENSE'];
+const names = withFrameworkFiles(['index.html', 'buttons.css', 'buttons.js', 'example.js', 'instrument-sans-variable.woff2', 'OFL.txt', 'LICENSE']);
 const variants = batch.map(item => item.variants[0]);
 
 test('buttons batch has ten distinct, complete and offline exports', async () => {

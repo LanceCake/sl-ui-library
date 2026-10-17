@@ -1,0 +1,45 @@
+# Additive framework release verification — 2026-10-18
+
+Status: locally verified release candidate; independent whole-branch review and publication are separate final gates. This report records bounded verification, not a guarantee that every possible application state, browser or backend integration is correct.
+
+## Scope and source identity
+
+- Current-main baseline: `f397ff4a86e12a5186884dfd186ba7ca89bd981f`, 297 catalog entries / 299 export variants. The ten `selection-basic-2` additions from that baseline are preserved.
+- Owner-approved additions: 91, producing 388 catalog entries / 390 export variants. The final rejected nine, withdrawn local 54–55 and unregistered `buttons-basic-6` are excluded. The additions are reviewed compositions and actions, not a claim of 91 new low-level primitives.
+- Original HTML, CSS and JavaScript remain available. Every variant additionally includes React and Next.js entry files, their controller/font companions, an executable local example and integration instructions.
+- React uses a source-preserving client-widget adapter with isolated Shadow DOM, not a native JSX/state-machine rewrite. Next.js supplies a real client boundary and a stable server placeholder, not meaningful widget SSR. Integration constraints are documented in [frameworks.md](../../frameworks.md).
+- Frozen Russian owner-review sources are retained separately under `review-sources/`, outside the deployed `public/` tree. Public interface labels remain English. User-provided Unicode remains literal text.
+
+## Environment and safety
+
+Windows, Node.js 25.9.0, React / ReactDOM 19.3.1, production Next.js 16.4.2 with webpack, pinned esbuild 0.28.2 and the installed Playwright / Microsoft Edge runtime. Dependencies, build caches and browser evidence were placed in the owner-approved D: test environment, not in the source checkout. The Pages workflow retains Node.js 22+ for the dependency-free static build/check.
+
+Operations use safe local fixtures, callbacks and in-memory inputs. No real authentication, account changes, payments, deliveries, device operations, messages or persistence were performed. Clipboard/file-sharing boundaries use explicit test adapters where stated. Demo confirmation is not evidence of server success. No plugin was installed into personal configuration, repository visibility changed or package registry used.
+
+## Completed focused checks
+
+- Adapter architecture: actual React and production Next.js RED/GREEN regression, 29/29 browser tests, fourteen server-import/render cases and production build. Includes suspended/abandoned render callback ownership, committed callback changes without remount, StrictMode cleanup, example-only Feedback controls, pending unmount and independent instances.
+- Legacy overlays: 16/16 actual React/Next.js cases, both motion preferences and 132 named steps. Includes composed pointer events, internal/outside dismissal, native Escape/focus, pin-checkbox source CSS, Unicode quick edit, reset, repeated instances and listener cleanup. Rerun on the final framework runtime passed.
+- Legacy asynchronous Feedback: 6/6 purpose-specific React/Next.js cases. Includes documented API activation, progress, duplicate pending requests, failure/retry, reset/cancel, unmount/late reply, reduced motion and two-instance separation. Normal production mount does not silently bind demonstration controls or fake success.
+- New 91 native exports: primary workflow/keyboard/instance ledger for every addition; 31 further native operation types exercised through 421/421 explicit cases. Separate focused focus/cart regressions: 81/81; recovery Hide/cancel/late reply: 27/27. Real backend integration remains outside these local tests.
+- Five-format source viewer: 15/15 actual browser cases across 320/861/1024/1440px and both motion preferences. Includes keyboard tabs/focus, exact companion files, lazy caching, literal Unicode/code, copy success/denial/stale completions, local outage/retry, rapid selection races and three downloaded ZIPs compared byte-for-byte. Eight width/motion screenshots were inspected. Zero unexpected errors or external requests; one intentional local 503 verifies retry.
+- Source-versus-adapter typography and SVG fingerprint: all 390 variants passed on the final runtime bytes, zero differences, browser errors or external requests. This compares rendered source control properties and SVG geometry at the tested width; it is not exhaustive pixel certification of every state.
+- Full framework matrix: 780/780 records passed, React StrictMode 390 plus production Next.js 390, zero failed assertions, browser errors or external requests. Six generic scenario groups cover normal/explicit-preview mounting, narrow geometry, focus/type inventory, literal Unicode and rapid activation, runtime reduced motion, and independent instances/cleanup/remount. The merged reports share one run UUID and every variant's exact five-file runtime SHA-256 matches both its matrix and fidelity evidence. Verification metadata was stamped only after this complete gate; generation itself still defaults to unverified.
+- Existing category browser suites ran with the actual named ESM Playwright entry, avoiding silent optional-runtime skips. All category suites passed.
+- Final native gallery: all four unchanged original browser tests passed, zero skips. This includes all388 catalog cards and390 workbenches at320/768/1024/1440px, original source tabs/full controller/ZIP/reset, and the Follow/Auto save/Output priority layout regressions. The exact tested runtime/catalog CSS/library CSS and emitted preview-data hashes were compared with the integrated files. The test file was unchanged; no readiness wait or fit assertion was relaxed.
+- Native presentation fixes: the approved91 alone use intrinsic content flow with the original minimum canvas, reset gutter and heading row. Earlier measured-height resizing had a real immediate-width race; deterministic RED/GREEN reproduced and fixed it without a frame delay. Final455 immediate-width samples and3 same-task probes passed;28 action/reset records,11 lifecycle records and8 exact-focus records passed with zero errors. One profile grew639→2053px while the independent second instance stayed unchanged, and five resets restored the original639px root/671.0625px canvas. Intentional inner scrolling is retained; hidden-shell focus scrolling, stale observation and cleanup are checked.
+- Standalone examples: all390 actual320px pages passed with successful HTTP responses, non-null visible source roots and horizontal bounds. Nineteen old wrappers changed only one head grid-track declaration; component CSS/JavaScript/SVG stayed byte-identical. All2,143 previous package files were independently compared with the297-entry baseline: unchanged except those nineteen head-only corrections. Every previous catalog entry and frozen reviewed-source pin is preserved.
+- Integrated static build/check: 388 entries / 390 packages and ZIPs, 4,837 text sources and local-reference/English-interface checks passed. The complete Node run reported 338 tests: 236 passed, 102 explicitly optional browser wrappers skipped, zero failures. Those skips are not counted as browser coverage; the separate actual category, framework and source-viewer runs above provide their own evidence.
+
+## Final release gates
+
+- Final build and canonical artifact verification passed all390 controllers and5,900 exact ZIP entries with a31,703,163-byte source bundle under the existing32,000,000-byte updater limit. The five-file runtime identities remain the ones tested in the780/390 framework evidence. Commit tracked generated artifacts with source changes; ZIPs are regenerated and remain ignored.
+- Review the complete isolated release diff, not the unrelated dirty development checkout. Publication is a separate owner-authorized step through the existing public-only Pages workflow. Verify the resulting deployment before claiming the new formats/elements are live.
+
+## Remaining integration limits
+
+The generic all-variant matrix supplements purpose-specific source tests; it is not exhaustive business-state coverage. Actual application callbacks must implement validation, authorization, errors and persistence. An AbortSignal cancels local ownership but does not prove a remote operation rolled back. External form serialization does not cross Shadow DOM; use the documented callback/ref API. Strict style CSP / Trusted Types may require an explicit host integration adaptation.
+
+Four original default-size controls retain documented minimum host widths: Bookmark and Follow 236px, Share 240px, Delete 248px. They are tested at supported source widths, not advertised as fitting an unmodified 226px host. No v11 source contract is waived by this note.
+
+Firefox, Safari, real touch devices, screen readers and real backend services are not certified by this Windows/Edge run. Runtime reduced-motion and keyboard/focus checks are included, but they do not replace a full accessibility audit in the consuming application.

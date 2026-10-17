@@ -1,5 +1,6 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import { components } from './public/catalog-data.js';
+import { approved91 } from './release-tools/compositions/inventory.mjs';
 
 // Compile the same downloadable sources into one local preview module.
 // Preview instances share code and CSS; each keeps its own state.
@@ -10,6 +11,15 @@ const styles = new Map();
 const modules = [];
 const frameControllers = new Map();
 let feedbackDemoCompiled = false;
+const sizing = new Map();
+const contentAllowlist = new Map(approved91.map(entry => [entry.id, entry.variants[0]]));
+for (const component of components) {
+  if (component.previewSizing !== undefined && component.previewSizing !== 'content') throw new Error(`Unknown previewSizing: ${component.id}`);
+  if (component.previewSizing === 'content' && (component.variants.length !== 1 || contentAllowlist.get(component.id) !== component.variants[0])) throw new Error(`Unapproved content sizing: ${component.id}`);
+  if (component.previewSizing === 'content') for (const variant of component.variants) sizing.set(variant, true);
+}
+const includedApproved = components.filter(component => contentAllowlist.has(component.id));
+if ((sizing.size || includedApproved.length) && (sizing.size !== 91 || includedApproved.length !== 91)) throw new Error('Content sizing requires the complete approved 91');
 for (const variant of components.flatMap(component => component.variants)) {
   // Keep the native-dialog viewport, but compile its content and code once.
   // No iframe navigation, script loading or per-package font request at runtime.
@@ -54,7 +64,7 @@ for (const variant of components.flatMap(component => component.variants)) {
   if (!api) {
     api = `api${controllers.size}`;
     controllers.set(source, api);
-    const expression = source.match(/\(\(\) => \{[\s\S]*\}\)\(\);\s*$/)?.[0];
+    const expression = source.match(/\(\(\)\s*=>\s*\{[\s\S]*\}\)\(\);\s*$/)?.[0];
     if (!expression) throw new Error(`Missing standalone controller: ${variant}`);
     modules.push(`const ${api} = ${expression.replace(/window\.\w+\s*=\s*(\{[^;]+\});/, 'return $1;')}`);
   }
@@ -88,7 +98,7 @@ for (const variant of components.flatMap(component => component.variants)) {
     }
     demo = ', demoMount: feedbackDemo.mount';
   }
-  definitions.push(`${JSON.stringify(variant)}: { markup: ${JSON.stringify(markup.trim())}, css: ${styles.get(css)}, mount: ${api}.mount${demo} }`);
+  definitions.push(`${JSON.stringify(variant)}: { markup: ${JSON.stringify(markup.trim())}, css: ${styles.get(css)}, mount: ${api}.mount${demo}${sizing.has(variant) ? ', contentSizing: true' : ''} }`);
 }
 await writeFile(new URL('preview-data.js', root), `// Generated from the standalone packages by build-previews.mjs.\n${modules.join('\n')}\nexport const previews = {\n${definitions.join(',\n')}\n};\n`.replace(/^[\t ]+$/gm, ''));
 console.log('Built shared previews from the catalog variants.');

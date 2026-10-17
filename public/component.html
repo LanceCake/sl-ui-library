@@ -80,13 +80,31 @@
               <button id="html-tab" type="button" role="tab" aria-selected="false" aria-controls="source-panel" tabindex="-1" data-file="index.html">HTML</button>
               <button id="css-tab" type="button" role="tab" aria-selected="false" aria-controls="source-panel" tabindex="-1" data-file="buttons.css">CSS</button>
               <button id="js-tab" type="button" role="tab" aria-selected="true" aria-controls="source-panel" data-file="example.js">JavaScript</button>
+              <button id="react-tab" type="button" role="tab" aria-selected="false" aria-controls="source-panel" tabindex="-1" data-file="Component.jsx">React</button>
+              <button id="next-tab" type="button" role="tab" aria-selected="false" aria-controls="source-panel" tabindex="-1" data-file="NextClient.jsx">Next.js</button>
             </div>
             <button class="surface-button copy-button" id="copy" type="button" disabled>
               <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="7" y="3" width="14" height="17" rx="2.5"/><path d="M17 20v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h2"/></svg>
               <span id="copy-label">Copy code</span>
             </button>
           </div>
-          <div id="source-panel" role="tabpanel" aria-labelledby="js-tab" tabindex="0" aria-busy="true">
+          <div class="source-context">
+            <code id="source-filename">example.js</code>
+            <div id="framework-source" hidden>
+              <p>A source-preserving React adapter: a client-only widget, with no meaningful server-rendered content. Download .zip for all required files and assets; copying JSX alone is not enough.</p>
+              <label for="source-file">Companion file</label>
+              <select id="source-file">
+                <option value="">Choose a file…</option>
+                <option value="react-controller.mjs">react-controller.mjs</option>
+                <option value="react-font.mjs">react-font.mjs</option>
+                <option value="framework-usage.md">framework-usage.md</option>
+                <option value="framework.json">framework.json</option>
+                <option value="react-example.jsx">react-example.jsx</option>
+                <option value="next-page.jsx">next-page.jsx</option>
+              </select>
+            </div>
+          </div>
+          <div id="source-panel" role="tabpanel" aria-labelledby="js-tab source-filename" tabindex="0" aria-busy="true">
             <pre class="line-numbers" id="line-numbers" aria-hidden="true">1</pre>
             <pre class="source-pre"><code id="source-code">Loading source…</code></pre>
           </div>

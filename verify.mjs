@@ -9,7 +9,7 @@ const variants=components.flatMap(c=>c.variants);
 assert.equal(new Set(variants).size,expectedVariants);
 let checked=0;
 for(const entry of await readdir(root,{withFileTypes:true})){
- if(!entry.isFile()||! /\.(html|css|js)$/.test(entry.name))continue;
+ if(!entry.isFile()||! /\.(html|css|js|mjs|jsx|json|md)$/.test(entry.name))continue;
  const text=await readFile(new URL(entry.name,root),'utf8');
  assert.ok(!/C:[\\/](?:Users|Program Files)|BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY|gh[pousr]_[A-Za-z0-9]{30}/.test(text),'Private material in '+entry.name);
 }
@@ -20,13 +20,13 @@ for(const c of components){
   const folder=new URL('packages/'+variant+'/',root);
   for(const name of ['index.html','buttons.css','buttons.js','example.js','OFL.txt'])assert.ok((await stat(new URL(name,folder))).size>0);
   for(const entry of await readdir(folder,{withFileTypes:true})){
-   if(!entry.isFile()||! /\.(html|css|js)$/.test(entry.name))continue;
+   if(!entry.isFile()||! /\.(html|css|js|mjs|jsx|json|md)$/.test(entry.name))continue;
    const text=await readFile(new URL(entry.name,folder),'utf8');checked++;
    const interfaceText=variant==='buttons-translate-toggle-v11'?text.replaceAll('Привет',''):text;
    assert.ok(!/[\p{Script=Cyrillic}\uFFFD]/u.test(interfaceText),'Unexpected package text: '+variant+'/'+entry.name);
    assert.ok(!/C:[\\/](?:Users|Program Files)|BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY|gh[pousr]_[A-Za-z0-9]{30}/.test(text),'Private material in '+variant+'/'+entry.name);
    const refs=entry.name.endsWith('.html')?[...text.matchAll(/(?:src|href)=["']([^"']+)["']/g)].map(m=>m[1]):entry.name.endsWith('.css')?[...text.matchAll(/url\(['"]?([^)'"\s]+)['"]?\)/g)].map(m=>m[1]):[...text.matchAll(/^import\s+(?:[^;\n]+?\s+from\s+)?['"]([^'"]+)['"]/gm)].map(m=>m[1]);
-   for(const ref of refs){if(/^(?:#|data:|https?:|blob:)/.test(ref))continue;const path=new URL(ref,new URL(entry.name,folder));path.search='';path.hash='';assert.ok(path.href.startsWith(root.href),'Escaped public root');await stat(path);}
+   for(const ref of refs){if(/^(?:#|data:|https?:|blob:)/.test(ref))continue;if(ref==='react'&&['Component.jsx','react-example.jsx'].includes(entry.name))continue;const path=new URL(ref,new URL(entry.name,folder));path.search='';path.hash='';assert.ok(path.href.startsWith(root.href),'Escaped public root');await stat(path);}
   }
   // The exporter uses store-only ZIPs. Compare every archived file with its source.
   const bytes=await readFile(new URL('downloads/matte-'+variant+'.zip',root));let offset=0,entries=0;

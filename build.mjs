@@ -21,7 +21,7 @@ for(const variant of components.flatMap(c=>c.variants)){
   const bytes=await readFile(new URL(entry.name,folder));
   const hash=createHash('sha256').update(bytes).digest('hex');
   manifest[entry.name]=hash;
-  blobs[hash]??={encoding:/\.(html|css|js|txt)$/.test(entry.name)?'utf8':'base64',content:bytes.toString(/\.(html|css|js|txt)$/.test(entry.name)?'utf8':'base64')};
+  blobs[hash]??={encoding:/\.(html|css|js|mjs|jsx|json|md|txt)$/.test(entry.name)?'utf8':'base64',content:bytes.toString(/\.(html|css|js|mjs|jsx|json|md|txt)$/.test(entry.name)?'utf8':'base64')};
   files.set(entry.name,bytes);
  }
  packages[variant]=manifest;

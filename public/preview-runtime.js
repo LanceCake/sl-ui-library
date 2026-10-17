@@ -4,6 +4,8 @@ const layout = `
   :host { display: block; position: relative; width: 100%; height: 100%; container-type: inline-size; color: #202222; color-scheme: light; font-family: 'Instrument Sans', sans-serif; }
   :host([variant="share"]) { container-type: size; }
   .stage { position: absolute; inset: 0; display: grid; place-content: center; }
+  :host([data-preview-sizing="content"]) { height: auto; }
+  :host([data-preview-sizing="content"]) .stage { position: relative; inset: auto; min-height: inherit; padding-block: 16px; box-sizing: border-box; }
   .stage > .sl-toggle { width: min(320px, calc(100cqw - 40px)); }
   .stage > .sl-check-card { width: min(320px, calc(100cqw - 40px)); }
   .stage > .sl-slider { width: min(320px, calc(100cqw - 40px)); }
@@ -34,6 +36,42 @@ const layout = `
   @container (max-height: 349px) { .sl-share__popover { bottom: calc(100% + 6px); padding: 10px; } }
 `;
 const sheets = new Map();
+// Intrinsic flow owns height. Observation only repairs focus-induced shell scroll;
+// source reflow must never wait for an observer or a later animation frame.
+const sizingOwners = new WeakMap();
+function contentSizing(host, element) {
+  const card = host.closest('.card-preview');
+  const panel = host.closest('.preview-panel');
+  const owner = card || panel?.closest('.workbench-body');
+  const token = {};
+  const wrappers = [card, panel, panel?.closest('.workbench')].filter(Boolean);
+  let disposed = false, frame = 0;
+  if (owner) sizingOwners.set(owner, token);
+  const measure = () => {
+    frame = 0;
+    if (disposed || !host.isConnected || !element.isConnected || host.shadowRoot.querySelector('.stage > .sl-component') !== element || (owner && sizingOwners.get(owner) !== token)) return;
+    // Focus can scroll overflow:hidden presentation ancestors before RO delivers.
+    // Only these owned shells are repaired; intentional component scrollers stay put.
+    for (const wrapper of wrappers) {
+      if (/^(hidden|clip)$/.test(getComputedStyle(wrapper).overflowY) && wrapper.scrollTop) wrapper.scrollTop = 0;
+    }
+  };
+  const schedule = () => { if (!disposed && !frame) frame = requestAnimationFrame(measure); };
+  const observer = new ResizeObserver(schedule);
+  observer.observe(element);
+  observer.observe(host);
+  host.shadowRoot.addEventListener('focusin', schedule);
+  measure();
+  return () => {
+    disposed = true;
+    observer.disconnect();
+    cancelAnimationFrame(frame);
+    host.shadowRoot.removeEventListener('focusin', schedule);
+    if (owner && sizingOwners.get(owner) === token) {
+      sizingOwners.delete(owner);
+    }
+  };
+}
 function stylesheet(css) {
   if (!sheets.has(css)) { const sheet = new CSSStyleSheet(); sheet.replaceSync(css + layout); sheets.set(css, sheet); }
   return sheets.get(css);
@@ -59,17 +97,21 @@ class Preview extends HTMLElement {
   static observedAttributes = ['variant'];
   constructor() { super(); this.attachShadow({ mode: 'open' }); }
   connectedCallback() { this.render(); }
-  disconnectedCallback() { this.controller?.destroy(); this.controller = null; }
+  disconnectedCallback() { this.stopSizing?.(); this.stopSizing = null; this.controller?.destroy(); this.controller = null; }
   attributeChangedCallback() { if (this.isConnected) this.render(); }
   reset() { if (/-(overlay|navigation|feedback|display)$/.test(this.currentVariant) && this.controller?.reset) this.controller.reset(); else this.render(true); }
   render(force = false) {
     const variant = this.getAttribute('variant') || 'pair';
     if (!force && this.controller && this.currentVariant === variant) return;
     const definition = previews[variant];
+    this.stopSizing?.();
+    this.stopSizing = null;
     this.controller?.destroy();
     this.controller = null;
     this.currentVariant = variant;
     delete this.dataset.ready;
+    delete this.dataset.previewSizing;
+    delete this.dataset.error;
     if (!definition) { this.shadowRoot.textContent = 'Preview unavailable.'; return; }
     const root = this.shadowRoot;
     if (definition.frameMount) {
@@ -181,6 +223,17 @@ class Preview extends HTMLElement {
         : definition.mount(field);
     } else {
       this.controller = definition.mount(root.querySelector('.sl-' + variant), { feedback: root.querySelector('.' + variant + '-feedback') });
+    }
+    if (definition.contentSizing) {
+      const element = root.querySelector('.stage > .sl-component');
+      if (!element || definition.rootSelector !== '.sl-component') {
+        this.controller?.destroy(); this.controller = null;
+        root.textContent = 'Preview content sizing requires its source root.';
+        this.dataset.error = 'content-sizing-root';
+        return;
+      }
+      this.dataset.previewSizing = 'content';
+      this.stopSizing = contentSizing(this, element);
     }
     this.dataset.ready = 'true';
   }

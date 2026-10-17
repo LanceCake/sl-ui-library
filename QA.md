@@ -1,3 +1,5 @@
+Current additive-framework verification: [2026-10-18 report](docs/development/reports/framework-release-2026-10-18.md), covering 388 entries / 390 variants. Earlier dated evidence below is retained as history, not a current catalog count.
+
 # Release verification — 2026-09-10
 
 ## Scope

@@ -1,3 +1,4 @@
+import {withFrameworkFiles} from '../framework-file-contract.mjs';
 import test, { before, after } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile, readdir, mkdir } from 'node:fs/promises';
@@ -41,7 +42,7 @@ test('ten complete, distinct packages obey the compiler and offline contract', a
     assert.equal(entry.id, `matte-${variant}`);
     assert.equal(entry.downloads[variant], `./downloads/matte-${variant}.zip`);
     assert.equal(entry.usage.length, 3);
-    assert.deepEqual((await readdir(new URL(`packages/${variant}`, publicRoot))).sort(), ['LICENSE','OFL.txt','buttons.css','buttons.js','example.js','index.html','instrument-sans-variable.woff2'].sort());
+    assert.deepEqual((await readdir(new URL(`packages/${variant}`, publicRoot))).sort(), withFrameworkFiles(['LICENSE','OFL.txt','buttons.css','buttons.js','example.js','index.html','instrument-sans-variable.woff2']).sort());
     const [html, css, js, example] = await Promise.all(['index.html','buttons.css','buttons.js','example.js'].map(f => source(variant,f)));
     assert.match(html, /<html lang="en">/);
     assert.match(html, /name="viewport"/);

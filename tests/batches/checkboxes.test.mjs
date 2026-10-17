@@ -1,3 +1,4 @@
+import {withFrameworkFiles} from '../framework-file-contract.mjs';
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile, readdir } from 'node:fs/promises';
@@ -104,7 +105,7 @@ for (const item of manifest) {
   const slug = item.variants[0].slice(11, -4);
   test(`${slug}: self-contained source, scoped CSS and compiler contract`, async () => {
     const directory = new URL(`${item.variants[0]}/`, packageRoot);
-    assert.deepEqual((await readdir(directory)).sort(), ['LICENSE', 'OFL.txt', 'buttons.css', 'buttons.js', 'example.js', 'index.html', 'instrument-sans-variable.woff2'].sort());
+    assert.deepEqual((await readdir(directory)).sort(), withFrameworkFiles(['LICENSE', 'OFL.txt', 'buttons.css', 'buttons.js', 'example.js', 'index.html', 'instrument-sans-variable.woff2']).sort());
     const html = await read(slug, 'index.html'), css = await read(slug, 'buttons.css'), js = await read(slug, 'buttons.js');
     assert.match(html, /<html lang="en">/);
     assert.match(html, /name="viewport"/);

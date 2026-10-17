@@ -1,0 +1,6 @@
+/* One local account control scale. Higher specificity keeps it consistent in
+   the services and extensions stylesheets without altering released packages. */
+.account-control.account-control .ac-segment,.account-control.account-control .as-choice-button{min-height:44px;padding:10px 12px;font:600 15px/20px 'Segoe UI',sans-serif;letter-spacing:0;overflow-wrap:anywhere}
+.account-control.account-control .ac-actions{gap:8px}
+.account-control.account-control .as-record>strong{font-size:15px;font-weight:600;line-height:22px}
+.account-control.account-control .ac-switch{font-size:15px;line-height:22px;font-weight:500}

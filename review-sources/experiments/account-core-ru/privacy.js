@@ -1,0 +1,49 @@
+export const privacy={
+  twofactor(t){
+    t.title('Дополнительная защита','Второй шаг подтверждения при входе в аккаунт.','shield');
+    let enabled=false,mode=null;const summary=t.listRow('Защита не подключена','Можно включить подтверждение входа','shield'),card=t.el('div','ac-inset');card.append(summary.node);
+    const code=t.field('Код подтверждения','','code-input'),editor=t.el('div','ac-flow'),info=t.el('p','ac-note'),form=t.reveal(editor);
+    const action=t.button('Подключить',()=>{mode=enabled?'disable':'enable';info.textContent=enabled?'Подтвердите отключение защиты':'Подтвердите подключение защиты';form.set(true);action.disabled=true;code.input.focus();});
+    const confirm=t.button('Подтвердить',async()=>{if(!/^\d{6}$/.test(code.input.value)||(t.options.demo&&code.input.value!=='123456')){t.say(t.options.demo?'Код этого примера: 123456.':'Введите шесть цифр кода.');code.input.focus();return;}const target=mode==='enable';await t.run(target?'twofactor.enable':'twofactor.disable',{code:code.input.value},()=>{enabled=target;mode=null;summary.name.textContent=enabled?'Защита подключена':'Защита не подключена';summary.caption.textContent=enabled?'При входе потребуется второй шаг':'Можно включить подтверждение входа';action.label.textContent=enabled?'Отключить':'Подключить';action.disabled=false;form.set(false);code.input.value='';code.input.dispatchEvent(new Event('input'));t.emit({enabled});action.focus();},confirm);});
+    const cancel=t.button('Отмена',()=>{t.cancel();mode=null;action.disabled=false;form.set(false);action.focus();},'quiet');editor.append(info,code.node,t.el('p','ac-hint ac-code-hint',t.options.demo?'Код примера: 123456. Защита настоящего аккаунта не изменяется.':'Код проверяется обработчиком вашего сервиса.'),t.actions(confirm,cancel));
+    t.on(code.input,'input',()=>{if(t.root.hasAttribute('aria-busy'))t.cancel();});t.root.append(card,t.actions(action),form.node);return()=>({enabled,mode});
+  },
+  recovery(t){
+    t.title('Запасной способ входа','Сохраните коды в надёжном месте, отдельно от устройства.','key');
+    let shown=false,acknowledged=false,generation=0,count=4;
+    const label=t.el('p','ac-note','Текущий набор · 4 кода'),grid=t.el('div','ac-codes'),cover=t.el('div','ac-codes-cover'),well=t.el('div','ac-code-well');cover.append(t.glyph('key'),t.el('strong','','Коды скрыты'),t.el('span','ac-hint','Покажите, когда будете готовы сохранить.'));well.append(grid,cover);
+    const ack=t.toggle('Я сохранил этот набор',false,value=>{acknowledged=value;rotate.disabled=!value;t.emit({acknowledged,generation,count});});
+    function display(codes){grid.replaceChildren();codes.forEach(value=>{const tile=t.el('div','ac-code-tile'),code=t.el('code');if(value.startsWith('DEMO-'))code.append(t.el('span','ac-code-prefix','DEMO-'),t.el('span','ac-code-value',value.slice(5)));else code.append(t.el('span','ac-code-value',value));tile.append(code);grid.append(tile);});shown=true;well.dataset.shown='true';cover.setAttribute('aria-hidden','true');grid.setAttribute('aria-hidden','false');show.label.textContent='Скрыть коды';count=codes.length;label.textContent=`Текущий набор · ${count} кода`;}
+    function hide(){shown=false;grid.replaceChildren();well.dataset.shown='false';cover.removeAttribute('aria-hidden');grid.setAttribute('aria-hidden','true');show.label.textContent='Показать коды';}
+    const sample=()=>Array.from({length:4},(_,i)=>`DEMO-${generation+1}${i+1}00`);
+    const values=result=>{if(t.options.demo)return sample();if(!Array.isArray(result?.codes)||!result.codes.length||!result.codes.every(c=>typeof c==='string'&&c.length<=80))throw new TypeError('Expected recovery codes');return result.codes.slice(0,8);};
+    const show=t.button('Показать коды',async()=>{if(shown){hide();return;}await t.run('recovery.reveal',{},result=>display(values(result)),show);},'secondary');
+    const rotate=t.button('Заменить набор',async()=>{await t.run('recovery.rotate',{},result=>{const codes=t.options.demo?null:values(result);generation++;acknowledged=false;ack.input.checked=false;rotate.disabled=true;display(codes??sample());t.emit({generation,count,acknowledged});},rotate);rotate.disabled=!acknowledged;},'secondary');rotate.disabled=true;
+    t.root.append(label,well,t.el('p','ac-hint ac-code-hint','В демонстрации все значения начинаются с DEMO и не подходят для входа.'),ack.node,t.actions(show,rotate));hide();return()=>({shown,acknowledged,generation,count});
+  },
+  visibility(t){
+    t.title('Публичный профиль','Вы решаете, что смогут увидеть другие люди.','eye');
+    let saved={bio:true,site:true,email:false},draft={...saved};
+    const fields=t.el('div','ac-switches'),preview=t.el('div','ac-public'),avatar=t.el('div','ac-avatar','АС'),name=t.el('strong','ac-public-name','Анна Смирнова');preview.append(avatar,name,t.el('span','ac-hint','Предпросмотр для посетителя'));
+    const lines={bio:t.el('p','ac-public-line','Дизайнер интерфейсов'),site:t.el('p','ac-public-line','anna.design'),email:t.el('p','ac-public-line','anna@example.com')};
+    const reveals={};for(const [key,line]of Object.entries(lines)){reveals[key]=t.reveal(line);preview.append(reveals[key].node);}
+    const controls=Object.entries({bio:'Описание',site:'Сайт или портфолио',email:'Электронная почта'}).map(([key,label])=>{const c=t.toggle(label,draft[key],value=>{if(t.root.hasAttribute('aria-busy'))t.cancel();draft[key]=value;paint();});fields.append(c.node);return {key,...c};});
+    const status=t.el('p','ac-draft-line','Настройки применены');
+    const save=t.button('Применить',async()=>{const next={...draft};await t.run('visibility.save',next,()=>{saved=next;t.emit({saved:{...saved}});},save);paint();});
+    const undo=t.button('Отменить',()=>{t.cancel();draft={...saved};controls.forEach(c=>c.input.checked=draft[c.key]);paint();},'quiet');
+    function paint(){for(const key of Object.keys(draft))reveals[key].set(draft[key]);const dirty=JSON.stringify(saved)!==JSON.stringify(draft);save.disabled=undo.disabled=!dirty;status.textContent=dirty?'Предпросмотр несохранённых изменений':'Настройки применены';}
+    t.root.append(fields,preview,status,t.actions(save,undo));paint();return()=>({saved:{...saved},draft:{...draft}});
+  },
+  addresses(t){
+    t.title('Сохранённые адреса','Выберите основной адрес или добавьте ещё один.','pin');
+    let addresses=[{id:'home',name:'Дом',address:'Новосибирск, ул. Лесная, 12',primary:true},{id:'work',name:'Работа',address:'Новосибирск, ул. Мира, 8',primary:false}],editing=null,removed=null,next=0;
+    const list=t.el('div','ac-list'),update=t.list(list),empty=t.el('p','ac-note','Адресов пока нет. Добавьте первый.'),editor=t.el('div','ac-flow'),heading=t.el('p','ac-note'),name=t.field('Название адреса',''),address=t.field('Адрес','','textarea-input'),form=t.reveal(editor);
+    const add=t.button('Добавить адрес',()=>open(null),'secondary');
+    function open(id){if(t.root.hasAttribute('aria-busy'))t.cancel();editing=id;const row=addresses.find(a=>a.id===id);heading.textContent=row?'Изменить адрес':'Новый адрес';name.input.value=row?.name??'';address.input.value=row?.address??'';form.set(true);address.input.dispatchEvent(new Event('input'));name.input.focus();}
+    const save=t.button('Сохранить',async()=>{const value={name:name.input.value.trim(),address:address.input.value.trim()};if(!value.name||!value.address){t.say('Заполните название и адрес.');(!value.name?name:address).input.focus();return;}const id=editing;await t.run(id?'address.update':'address.add',{id,...value},result=>{if(id)Object.assign(addresses.find(a=>a.id===id),value);else addresses.push({id:result?.id??`example-${++next}`,...value,primary:!addresses.length});form.set(false);editing=null;draw();t.emit({addresses:addresses.map(a=>({...a}))});add.focus();},save);});
+    const cancel=t.button('Отмена',()=>{t.cancel();editing=null;form.set(false);add.focus();},'quiet');editor.append(heading,name.node,address.node,t.actions(save,cancel));
+    const undo=t.button('Вернуть адрес',async()=>{if(!removed)return;const last=removed;await t.run('address.restore',{address:{...last.row}},()=>{if(last.row.primary)addresses.forEach(a=>a.primary=false);addresses.splice(Math.min(last.index,addresses.length),0,last.row);removed=null;draw();t.emit({addresses:addresses.map(a=>({...a}))});},undo);},'secondary');
+    function draw(){empty.hidden=!!addresses.length;if(!empty.isConnected)list.append(empty);update(addresses,row=>{const view=t.listRow(row.name,row.address,'pin');if(row.primary)view.copy.append(t.el('span','ac-badge','Основной'));const edit=t.button('Изменить',()=>open(row.id),'small'),remove=t.button('Удалить',async()=>{if(editing===row.id){form.set(false);editing=null;}await t.run('address.remove',{id:row.id},()=>{removed={row:{...row},index:addresses.indexOf(row)};addresses=addresses.filter(a=>a.id!==row.id);if(row.primary&&addresses.length)addresses[0].primary=true;draw();t.emit({addresses:addresses.map(a=>({...a}))});undo.focus();},remove);},'small'),main=t.button('Основной',async()=>{await t.run('address.primary',{id:row.id},()=>{addresses.forEach(a=>a.primary=a.id===row.id);draw();t.emit({addresses:addresses.map(a=>({...a}))});},main);},'small');edit.setAttribute('aria-label',`Изменить: ${row.name}`);remove.setAttribute('aria-label',`Удалить: ${row.name}`);remove.title='Удалить адрес';remove.label.replaceChildren(t.glyph('close'));main.setAttribute('aria-label',`Основной: ${row.name}`);view.node.append(t.actions(edit,...(row.primary?[]:[main]),remove));return view.node;});undo.disabled=!removed;undo.view.hidden=!removed;}
+    for(const f of [name,address])t.on(f.input,'input',()=>{if(t.root.hasAttribute('aria-busy'))t.cancel();});t.root.append(list,t.actions(add,undo),form.node);draw();return()=>({addresses:addresses.map(a=>({...a})),editing,canUndo:!!removed});
+  },
+};

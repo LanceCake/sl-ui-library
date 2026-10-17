@@ -19,6 +19,10 @@ retain their returned SHA-256 values as a source receipt, and report the selecte
 component ID and variant before claiming an SL UI integration. Similar shadcn,
 Radix or framework controls are replacements, not source-faithful adaptations.
 
+## React and Next.js exports
+
+Every variant retains its vanilla HTML/CSS/JavaScript and adds source-preserving React and Next.js entry points. Export the complete package with the source tools, then read framework-usage.md and framework.json. Component.jsx imports the bundled controller and font helper; NextClient.jsx supplies the client boundary. Copying one JSX file alone is not a complete integration. These are isolated client widgets, not native React-state rewrites or meaningful widget SSR. Use callbacks/ref for application operations and form values. See [framework integration](frameworks.md) for lifecycle, examples, CSP and source-audit constraints.
+
 ## Claude
 
 Download [sl-ui-library-plugin.zip](https://sltowl.github.io/sl-ui-library/downloads/sl-ui-library-plugin.zip). In Claude, open **Customize → Plugins** and use the custom-plugin upload option. Enable the installed plugin and select **use-sl-ui**, or describe a relevant interface task. Availability and permissions depend on the client and workspace.

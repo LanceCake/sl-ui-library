@@ -53,7 +53,7 @@ export async function run(args){
  }
  if(command==='palette'){
   const colors=new Map();
-  for(const name of Object.keys(manifest).filter(name=>/\.(css|html|js)$/.test(name)))for(const match of bytes(name).content.toString('utf8').matchAll(colorPattern)){
+  for(const name of Object.keys(manifest).filter(name=>/\.(css|html|js|mjs|jsx)$/.test(name)))for(const match of bytes(name).content.toString('utf8').matchAll(colorPattern)){
    const key=match[0].toLowerCase();colors.set(key,[...new Set([...(colors.get(key)??[]),name])]);
   }
   return {variant,colors:[...colors].map(([color,files])=>({color,files})),instructions:'Map only requested palette colors. Keep semantic states, visible focus, icon contrast and alpha. Verify rendered contrast after integration.'};
@@ -74,7 +74,7 @@ export async function run(args){
    normalized[from.toLowerCase()]=to;
   }
   const used=new Set();
-  for(const entry of entries.filter(e=>/\.(css|html|js)$/.test(e.name))){
+  for(const entry of entries.filter(e=>/\.(css|html|js|mjs|jsx)$/.test(e.name))){
    entry.content=Buffer.from(entry.content.toString('utf8').replace(colorPattern,value=>{const key=value.toLowerCase();if(own(normalized,key)){used.add(key);return normalized[key];}return value;}));
   }
   if(Object.keys(normalized).some(key=>!used.has(key)))fail('A mapped color does not exist in this component; inspect palette first');

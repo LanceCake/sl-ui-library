@@ -1,12 +1,12 @@
 # SL UI Library
 
-An AI plugin for finding and integrating UI components, with a browsable HTML, CSS and JavaScript library.
+An AI plugin for finding and integrating UI components, with a browsable HTML, CSS and JavaScript library and additive React / Next.js exports.
 
-**Version 1.1.2** makes source provenance a required integration gate and makes a failed source audit return a nonzero exit code. The existing catalog is unchanged by this patch. [Release notes](docs/releases/v1.1.2.md) · [Previous patch](docs/releases/v1.1.1.md) · [Initial 1.1 release](docs/releases/v1.1.0.md).
+**Version 1.2.0** adds 91 owner-approved elements and React / Next.js source-preserving adapters for every export variant. Existing HTML, CSS and JavaScript remain available. [Release notes](docs/releases/v1.2.0.md) · [Framework integration](docs/frameworks.md) · [Previous release](docs/releases/v1.1.2.md).
 
 ![Graphite SL UI Library controls in a warm studio composition](docs/media/cover.png)
 
-**297 interactive components** in HTML, CSS and JavaScript. No runtime dependencies, remote fonts or stock icon libraries. Preview components and download their source files. The plugin helps a coding agent find and integrate components.
+**388 interactive components** with 390 export variants. Vanilla exports have no runtime dependencies, remote fonts or stock icon libraries. React and Next.js use your application's framework runtime and mount the same original controller as an isolated client widget. Preview components and download their complete source files.
 
 [Open the library](https://sltowl.github.io/sl-ui-library/) · [Install the plugin](#plugin-installation) · [Components](#components) · [Integration guide](docs/integration.md) · [Quality notes](QA.md) · [MIT License](LICENSE)
 
@@ -24,18 +24,18 @@ Studio photography is generated artwork; the film uses library components with C
 
 | Category | Components |
 | --- | ---: |
-| Buttons | 63 |
-| Inputs | 30 |
-| Toggles | 30 |
-| Checkboxes | 35 |
-| Sliders | 34 |
-| Menus | 25 |
-| Navigation | 20 |
+| Buttons | 79 |
+| Inputs | 51 |
+| Toggles | 52 |
+| Checkboxes | 36 |
+| Sliders | 35 |
+| Menus | 26 |
+| Navigation | 24 |
 | Overlays | 20 |
-| Feedback | 20 |
-| Data display | 20 |
+| Feedback | 23 |
+| Data display | 42 |
 
-297 components, 299 export variants. Save & Cancel is available together or separately. All ten categories contain working previews and complete source packages.
+388 components, 390 export variants. Save & Cancel is available together or separately. All ten categories contain working previews and complete source packages. Each package retains its original vanilla files and adds React / Next.js entry points with their documented companions.
 
 ## Plugin installation
 

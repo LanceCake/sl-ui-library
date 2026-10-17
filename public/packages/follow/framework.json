@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "variant": "follow",
+  "kind": "react-adapter",
+  "rendering": "client-widget",
+  "status": "verified-client-widget",
+  "formats": [
+    "html",
+    "css",
+    "javascript",
+    "react",
+    "nextjs"
+  ],
+  "react": "Component.jsx",
+  "nextjs": "NextClient.jsx",
+  "required": [
+    "Component.jsx",
+    "react-controller.mjs",
+    "react-font.mjs",
+    "instrument-sans-variable.woff2"
+  ],
+  "tested": {
+    "react": true,
+    "nextjs": true
+  },
+  "verification": {
+    "controllerSHA256": "79bb33e2ed7f64863e059eb03b64db1efe61d4a1a8bd6a8130290cb279664386",
+    "runtimeSHA256": "3288f926125c012b3883f959640b7953a50d5a73c6d399c92e645d8f8fda2224",
+    "scope": "Client mount, generic input/activation, focus, host geometry, runtime reduced motion, isolated instances and cleanup in React StrictMode and production Next.js; source control typography/SVG fingerprint at320px.",
+    "limitations": "Not exhaustive application-state or real-backend verification. No meaningful widget SSR. Original default-size constraints and generic activation limits are recorded below.",
+    "notes": [
+      "Original fixed-size source requires 236px;226px host is unsupported, not reported as fitting."
+    ]
+  }
+}

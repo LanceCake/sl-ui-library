@@ -1,0 +1,16 @@
+{
+  "name": "sl-ui-framework-verification",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "next build --webpack"
+  },
+  "dependencies": {
+    "next": "16.4.2",
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2"
+  }
+}

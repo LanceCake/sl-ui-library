@@ -1,0 +1,15 @@
+export const items=[
+  {key:'top',name:'Наверх',description:'Вернуться к началу страницы.',label:'Наверх',purpose:'Scroll to the top, not zoom or expand.'},
+  {key:'more',name:'Показать ещё',description:'Загрузить следующую порцию элементов.',label:'Показать ещё',purpose:'Incremental loading, not generic disclosure.'},
+  {key:'defaults',name:'Сбросить настройки',description:'Вернуть исходные значения.',label:'Сбросить настройки',purpose:'Restore defaults, not undo the latest edit.'},
+  {key:'redo',name:'Повторить действие',description:'Вернуть ранее отменённое изменение.',label:'Повторить',purpose:'Redo a previously undone change, not undo.'},
+  {key:'invert',name:'Инвертировать выбор',description:'Выбранное снять, остальное выбрать.',label:'Инвертировать',purpose:'Complement a multi-selection, not select all.'},
+  {key:'expand-all',name:'Развернуть всё',description:'Одновременно раскрыть или свернуть разделы.',label:'Развернуть всё',alternate:'Свернуть всё',purpose:'Bulk disclosure, not expanding one display.'},
+  {key:'invite',name:'Пригласить участника',description:'Действие приглашения в команду.',label:'Пригласить',purpose:'Invite a new member, not assign an existing person.'},
+  {key:'signout',name:'Выйти из аккаунта',description:'Завершить текущую сессию.',label:'Выйти из аккаунта',purpose:'Sign out of an account, not power off a device.'},
+  {key:'call',name:'Позвонить',description:'Открыть звонок по контактному номеру.',label:'Позвонить',purpose:'Telephone handoff, not a recording control.'},
+  {key:'email',name:'Написать письмо',description:'Открыть новое письмо в почтовой программе.',label:'Написать письмо',purpose:'Email composer handoff, not send a message now.'},
+  {key:'support',name:'Чат поддержки',description:'Открыть обращение в поддержку.',label:'Чат поддержки',purpose:'Support conversation entry, not commenting on a selection.'},
+  {key:'directions',name:'Проложить маршрут',description:'Перейти к маршруту до адреса.',label:'Проложить маршрут',purpose:'Geographic route handoff, not navigation within content.'},
+  {key:'calendar',name:'Добавить в календарь',description:'Сохранить событие в своём календаре.',label:'В календарь',purpose:'Calendar event handoff, not choosing a date.'},
+];

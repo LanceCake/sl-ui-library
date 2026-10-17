@@ -1,3 +1,4 @@
+import {withFrameworkFiles} from '../framework-file-contract.mjs';
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile, readdir, mkdir } from 'node:fs/promises';
@@ -28,7 +29,7 @@ test('exactly ten distinct, complete input exports obey the compiler and offline
     assert.equal(entry.preview, `./packages/${variant}/index.html?embed=1`);
     assert.equal(entry.downloads[variant], `./downloads/${entry.id}.zip`);
     assert.equal(entry.usage.length, 3);
-    assert.deepEqual((await readdir(new URL(`packages/${variant}/`, publicRoot))).sort(), ['LICENSE', 'OFL.txt', 'buttons.css', 'buttons.js', 'example.js', 'index.html', 'instrument-sans-variable.woff2'].sort());
+    assert.deepEqual((await readdir(new URL(`packages/${variant}/`, publicRoot))).sort(), withFrameworkFiles(['LICENSE', 'OFL.txt', 'buttons.css', 'buttons.js', 'example.js', 'index.html', 'instrument-sans-variable.woff2']).sort());
     assert.deepEqual(await readFile(packageURL(variant, 'instrument-sans-variable.woff2')), await readFile(packageURL('text-input', 'instrument-sans-variable.woff2')));
     assert.deepEqual(await readFile(packageURL(variant, 'OFL.txt')), await readFile(packageURL('text-input', 'OFL.txt')));
     assert.deepEqual(await readFile(packageURL(variant, 'LICENSE')), await readFile(new URL('../../LICENSE', import.meta.url)));

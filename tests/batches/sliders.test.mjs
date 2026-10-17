@@ -1,3 +1,4 @@
+import {withFrameworkFiles} from '../framework-file-contract.mjs';
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile, readdir } from 'node:fs/promises';
@@ -64,7 +65,7 @@ test('fourteen revised exports compile and preserve offline, scoped package cont
   for(const c of batch){
     assert.equal(c.category,'sliders');assert.equal(c.variants.length,1);assert.equal(c.usage.length,3);
     const variant=c.variants[0],folder=new URL(`public/packages/${variant}/`,repo);
-    assert.deepEqual((await readdir(folder)).sort(),['LICENSE','OFL.txt','buttons.css','buttons.js','example.js','index.html','instrument-sans-variable.woff2'].sort());
+    assert.deepEqual((await readdir(folder)).sort(),withFrameworkFiles(['LICENSE','OFL.txt','buttons.css','buttons.js','example.js','index.html','instrument-sans-variable.woff2']).sort());
     assert.deepEqual(await readFile(new URL('LICENSE',folder)),license);
     assert.deepEqual(await readFile(new URL('instrument-sans-variable.woff2',folder)),font);
     const html=await readFile(new URL('index.html',folder),'utf8'),js=await readFile(new URL('buttons.js',folder),'utf8'),css=await readFile(new URL('buttons.css',folder),'utf8');

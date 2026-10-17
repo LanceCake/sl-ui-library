@@ -1,10 +1,11 @@
+import {withFrameworkFiles} from '../framework-file-contract.mjs';
 import assert from 'node:assert/strict';
 import { readFile, readdir } from 'node:fs/promises';
 import test from 'node:test';
 import manifest from '../../public/catalog-batches/selection-basic-2.js';
 
 const rootUrl = new URL('../../', import.meta.url);
-const required = ['LICENSE', 'OFL.txt', 'buttons.css', 'buttons.js', 'example.js', 'index.html', 'instrument-sans-variable.woff2'];
+const required = withFrameworkFiles(['LICENSE', 'OFL.txt', 'buttons.css', 'buttons.js', 'example.js', 'index.html', 'instrument-sans-variable.woff2']);
 const read = (variant, file) => readFile(new URL(`public/packages/${variant}/${file}`, rootUrl), 'utf8');
 
 test('second Toggles batch contains ten isolated selection packages', async () => {

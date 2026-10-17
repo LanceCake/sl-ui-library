@@ -1,0 +1,26 @@
+import {mkdir,copyFile,writeFile,readFile} from 'node:fs/promises';
+import {resolve,isAbsolute} from 'node:path';
+import {pathToFileURL} from 'node:url';
+import {generateVariant} from '../frameworks/generate.mjs';
+const [sourceRoot,targetRoot]=process.argv.slice(2);
+if(!isAbsolute(sourceRoot||'')||!isAbsolute(targetRoot||''))throw new TypeError('Absolute source and test-runtime directories required');
+const variants=['like','pair','text-input','confirm-overlay','linear-feedback','circular-feedback','loading-feedback','skeleton-feedback','toast-feedback','stack-feedback','undo-feedback','alert-feedback','connection-feedback','retry-feedback'];
+await mkdir(resolve(targetRoot,'browser'),{recursive:true});await mkdir(resolve(targetRoot,'app/example'),{recursive:true});
+for(const file of ['react-entry.jsx','next.config.mjs','app/layout.jsx','app/page.jsx','app/pilot.jsx'])await copyFile(new URL('../tests/framework-fixture/'+file,import.meta.url),resolve(targetRoot,file));
+await copyFile(new URL('../tests/framework-fixture/PilotHarness.jsx',import.meta.url),resolve(targetRoot,'Harness.jsx'));
+for(const variant of variants){const packageRoot=pathToFileURL(resolve(sourceRoot,'public/packages',variant)+'/');await generateVariant({packageRoot,variant,targetRoot:resolve(targetRoot,'generated/packages')});await copyFile(new URL('instrument-sans-variable.woff2',packageRoot),resolve(targetRoot,'generated/packages',variant,'instrument-sans-variable.woff2'));}
+for(const [mode,file]of [['react','Component.jsx'],['next','NextClient.jsx']]){const imports=variants.map((v,i)=>`import C${i} from './generated/packages/${v}/${file}';`).join('\n');await writeFile(resolve(targetRoot,'registry-'+mode+'.js'),imports+'\nexport const registry={'+variants.map((v,i)=>JSON.stringify(v)+':C'+i).join(',')+'};\n');}
+const exampleVariants=['pair',...variants.filter(variant=>variant.endsWith('-feedback'))];
+await writeFile(resolve(targetRoot,'registry-examples.js'),exampleVariants.map((v,i)=>`import E${i} from './generated/packages/${v}/react-example.jsx';`).join('\n')+'\nexport const registry={'+exampleVariants.map((v,i)=>JSON.stringify(v)+':E'+i).join(',')+'};\n');
+await writeFile(resolve(targetRoot,'app/example/examples.jsx'),`'use client';\nimport {ExampleHarness} from '../../Harness.jsx';import {registry} from '../../registry-examples.js';export default function Examples(){return <ExampleHarness registry={registry}/>;}\n`);
+await writeFile(resolve(targetRoot,'app/example/page.jsx'),`import Examples from './examples.jsx';export default function Page(){return <Examples/>;}\n`);
+const esbuild=await import(pathToFileURL(resolve(targetRoot,'node_modules/esbuild/lib/main.js')));
+await esbuild.build({absWorkingDir:targetRoot,entryPoints:['react-entry.jsx'],bundle:true,format:'esm',platform:'browser',outfile:resolve(targetRoot,'browser/react.js'),jsx:'automatic',minify:false,logLevel:'warning'});
+await esbuild.build({stdin:{contents:`import{createRoot}from'react-dom/client';import{StrictMode}from'react';import {ExampleHarness} from './Harness.jsx';import {registry} from './registry-examples.js';createRoot(document.getElementById('root')).render(<StrictMode><ExampleHarness registry={registry}/></StrictMode>);`,resolveDir:targetRoot,sourcefile:'copied-example.jsx',loader:'jsx'},bundle:true,format:'esm',platform:'browser',outfile:resolve(targetRoot,'browser/example.js'),jsx:'automatic',logLevel:'warning'});
+await copyFile(resolve(sourceRoot,'public/packages/like/instrument-sans-variable.woff2'),resolve(targetRoot,'browser/instrument-sans-variable.woff2'));
+await writeFile(resolve(targetRoot,'browser/index.html'),'<!doctype html><html lang="en"><head><meta charset="utf-8"><link rel="icon" href="data:,"><meta name="viewport" content="width=device-width,initial-scale=1"><title>React verification</title></head><body style="margin:24px;font-family:Arial,sans-serif;background:#f3f3f3;color:#222"><div id="root"></div><script type="module" src="./react.js"></script></body></html>');
+await writeFile(resolve(targetRoot,'browser/example.html'),'<!doctype html><html lang="en"><head><meta charset="utf-8"><link rel="icon" href="data:,"><title>Copied React example</title></head><body><div id="root"></div><script type="module" src="./example.js"></script></body></html>');
+// Bundle server import tests with React external; output resolves the installed
+// runtime from the same private test directory, never a global installation.
+await esbuild.build({stdin:{contents:`import {createElement} from 'react';import{renderToString}from'react-dom/server';import{registry}from'./registry-react.js';for(const[key,Component]of Object.entries(registry)){const html=renderToString(createElement(Component));if(!html.includes('data-sl-react'))throw new Error(key);console.log(key+' server import/render safe');}`,resolveDir:targetRoot,sourcefile:'ssr-entry.mjs'},bundle:true,platform:'node',format:'esm',outfile:resolve(targetRoot,'ssr-test.mjs'),external:['react','react-dom/server'],jsx:'automatic',logLevel:'warning'});
+await writeFile(resolve(targetRoot,'pilot.json'),JSON.stringify({variants,status:'generated-not-verified',source:'actual packages',react:'19.3.1',next:'16.4.2'},null,2)+'\n');console.log('Generated '+variants.length+' source-preserving pilot exports; browser/Next verification still required.');

@@ -1,3 +1,4 @@
+import {withFrameworkFiles} from '../framework-file-contract.mjs';
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile, readdir } from 'node:fs/promises';
@@ -9,7 +10,7 @@ import { createHash } from 'node:crypto';
 import batch from '../../public/catalog-batches/buttons-basic.js';
 
 const project = new URL('../../', import.meta.url);
-const files = ['index.html', 'buttons.css', 'buttons.js', 'example.js', 'instrument-sans-variable.woff2', 'OFL.txt', 'LICENSE'];
+const files = withFrameworkFiles(['index.html', 'buttons.css', 'buttons.js', 'example.js', 'instrument-sans-variable.woff2', 'OFL.txt', 'LICENSE']);
 const variants = batch.map(item => item.variants[0]);
 const read = (variant, file) => readFile(new URL(`public/packages/${variant}/${file}`, project), 'utf8');
 

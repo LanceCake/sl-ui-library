@@ -1,3 +1,4 @@
+import {withFrameworkFiles} from '../framework-file-contract.mjs';
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile, readdir } from 'node:fs/promises';
@@ -9,7 +10,7 @@ import batch from '../../public/catalog-batches/buttons-basic-4.js';
 import { components as releasedComponents } from '../../public/catalog-data.js';
 
 const project = new URL('../../', import.meta.url);
-const files = ['index.html', 'buttons.css', 'buttons.js', 'example.js', 'instrument-sans-variable.woff2', 'OFL.txt', 'LICENSE'];
+const files = withFrameworkFiles(['index.html', 'buttons.css', 'buttons.js', 'example.js', 'instrument-sans-variable.woff2', 'OFL.txt', 'LICENSE']);
 const variants = batch.map(item => item.variants[0]);
 const expected = [
   ['buttons-cart-toggle-v11', 'cartState', 'empty', 'added', 'setCartState'],

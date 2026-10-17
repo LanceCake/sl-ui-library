@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "sl-ui-library",
-  "version": "1.1.2",
-  "description": "Find SL UI components by intent, adapt their palette and integrate the bundled HTML, CSS and JavaScript.",
+  "version": "1.2.0",
+  "description": "Find real SL UI components, adapt their palette and integrate bundled HTML/CSS/JavaScript or source-preserving React/Next.js adapters.",
   "author": {
     "name": "SLtowl"
   },

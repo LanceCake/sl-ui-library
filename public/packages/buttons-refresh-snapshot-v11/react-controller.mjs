@@ -1,0 +1,63 @@
+import{retainFont as G}from"./react-font.mjs";const P="buttons-refresh-snapshot-v11";const J='<section class="sl-component" data-kind="buttons-refresh-snapshot" data-phase="idle" aria-label="Refresh snapshot" aria-busy="false">\n    <p class="ab-eyebrow">Refresh snapshot</p>\n    <h2>Workspace files</h2>\n    <p class="ab-description">Keep the last result while updating.</p>\n    <div class="ab-snapshot"><strong data-count>24</strong><span>files in snapshot</span></div>\n<div class="ab-meta"><span data-revision>Initial snapshot</span><span data-updated>Not refreshed</span></div>\n<div class="ab-actions"><button type="button" class="ab-primary ab-wide" data-run><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M19 8a8 8 0 1 0 1 7M19 3v5h-5"/></svg><span data-run-label>Refresh snapshot</span></button><button type="button" class="ab-quiet ab-wide" data-cancel hidden>Cancel refresh</button></div>\n    <p class="ab-status" data-status role="status" aria-live="polite" aria-atomic="true">The current snapshot stays visible.</p>\n    <p class="ab-note" data-note>Connect onRefresh to read your data.</p>\n  </section>';const Q=`/* Palette tokens may be overridden on this component alone. */
+@font-face { font-family: 'Instrument Sans'; src: url('./instrument-sans-variable.woff2') format('woff2'); font-weight: 400 700; font-style: normal; font-display: swap; }
+.sl-component {
+  --action-ink: #222222; --action-surface: #2f2f2f; --action-hover: #3c3c3c;
+  --action-text: #f6f6f6; --action-muted: #bdbdbd; --action-accent: #e0e0e0;
+  --action-on-accent: #2a2a2a; --action-danger: #efb8a6; --action-border: #505050;
+  --action-focus: #e0e0e0; --action-track: #5e5e5e;
+  width: 320px; max-width: 100%; min-width: 0; padding: 20px; position: relative;
+  color: var(--action-text); background: var(--action-ink); border: 1px solid var(--action-surface);
+  border-radius: 16px; box-shadow: inset 0 1px 0 #ffffff08, 0 3px 7px #00000010;
+  font: 14px/1.45 'Instrument Sans', sans-serif; font-synthesis: none; -webkit-font-smoothing: antialiased;
+}
+.sl-component, .sl-component *, .sl-component *::before, .sl-component *::after { box-sizing: border-box; }
+.sl-component [hidden] { display: none !important; }
+.sl-component h2, .sl-component p { margin: 0; }
+.sl-component h2 { font-size: 15px; line-height: 1.4; font-weight: 550; letter-spacing: -.02em; }
+.sl-component .ab-eyebrow { color: var(--action-muted); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 8px; }
+.sl-component .ab-description { margin-top: 5px; color: var(--action-muted); font-size: 12px; }
+.sl-component .ab-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 20px; }
+.sl-component button { appearance: none; font: inherit; font-size: 12px; line-height: 1.35; font-weight: 550; border: 1px solid var(--action-border); border-radius: 10px; padding: 11px 13px; min-height: 42px; background: var(--action-surface); color: var(--action-text); display: inline-flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer; touch-action: manipulation; position: relative; transition: background-color 180ms ease, color 180ms ease, transform 240ms cubic-bezier(.2,0,0,1), border-color 180ms ease; -webkit-tap-highlight-color: transparent; }
+.sl-component button.ab-primary { background: var(--action-accent); color: var(--action-on-accent); border-color: transparent; }
+.sl-component button.ab-quiet { background: transparent; }
+.sl-component button.ab-danger { color: var(--action-danger); }
+.sl-component button.ab-wide { width: 100%; }
+.sl-component button.ab-icon { width: 42px; padding: 10px; flex: 0 0 42px; }
+.sl-component button:focus-visible { outline: 2px solid var(--action-focus); outline-offset: 3px; }
+.sl-component button:disabled, .sl-component button[aria-disabled="true"] { opacity: .55; cursor: default; transform: none; }
+@media (hover: hover) {
+  .sl-component button:hover:not(:disabled):not([aria-disabled="true"]) { background: var(--action-hover); transform: translateY(-1px); }
+  .sl-component button.ab-primary:hover:not(:disabled):not([aria-disabled="true"]) { background: var(--action-accent); filter: brightness(1.04); }
+}
+.sl-component button:active:not(:disabled):not([aria-disabled="true"]) { transform: translateY(1px) scale(.98); transition-duration: 90ms; }
+.sl-component svg { width: 20px; height: 20px; flex: 0 0 auto; display: block; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.sl-component .ab-status { color: var(--action-muted); font-size: 12px; min-height: 36px; margin-top: 16px; overflow-wrap: anywhere; }
+.sl-component[data-phase="error"] .ab-status { color: var(--action-danger); }
+.sl-component .ab-note { color: var(--action-muted); border-top: 1px solid var(--action-surface); margin-top: 12px; padding-top: 10px; font-size: 10px; }
+.sl-component .ab-meta { display: flex; align-items: center; justify-content: space-between; gap: 8px; color: var(--action-muted); font-size: 11px; margin-top: 14px; }
+.sl-component .ab-value { font-variant-numeric: tabular-nums; color: var(--action-accent); }
+.sl-component .ab-track { height: 4px; border-radius: 4px; background: var(--action-track); margin-top: 12px; overflow: hidden; }
+.sl-component .ab-fill { display: block; height: 100%; background: var(--action-accent); transform: scaleX(0); transform-origin: left; transition: transform 200ms ease; }
+.sl-component .ab-reveal { display: grid; grid-template-rows: 0fr; opacity: 0; visibility: hidden; transition: grid-template-rows 240ms ease, opacity 180ms ease, visibility 0s 240ms; }
+.sl-component .ab-reveal[data-open="true"] { grid-template-rows: 1fr; opacity: 1; visibility: visible; transition: grid-template-rows 240ms ease, opacity 180ms ease, visibility 0s; }
+.sl-component .ab-reveal > div { overflow: hidden; min-height: 0; }
+.sl-component .ab-reveal .ab-inset { padding: 8px 4px 4px; }
+.sl-component .ab-divider { height: 1px; background: var(--action-border); margin: 16px 0; }
+@media (prefers-reduced-motion: reduce) {
+  .sl-component *, .sl-component *::before, .sl-component *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+  .sl-component button:hover, .sl-component button:active { transform: none !important; }
+}
+@media (forced-colors: active) {
+  .sl-component { border-color: CanvasText; }
+  .sl-component button { border: 1px solid ButtonText; }
+  .sl-component button[aria-pressed="true"], .sl-component button[aria-checked="true"] { outline: 1px solid Highlight; outline-offset: -4px; }
+  .sl-component .ab-fill { background: Highlight; }
+  .sl-component button:focus-visible { outline-color: Highlight; }
+}
+.sl-component .ab-snapshot { display: flex; align-items: baseline; gap: 10px; margin-top: 20px; }
+.sl-component .ab-snapshot strong { font-size: 38px; font-weight: 500; letter-spacing: -.045em; font-variant-numeric: tabular-nums; }
+.sl-component .ab-snapshot span { font-size: 11px; color: var(--action-muted); }
+.sl-component [data-run] svg { transition: transform 360ms cubic-bezier(.2,0,0,1); }
+.sl-component[data-phase="pending"] [data-run] svg { transform: rotate(180deg); }
+.sl-component [data-updated] { text-align: right; }
+`;function Z(){return(()=>{"use strict";function c(t,l={}){if(!t?.matches(".sl-component"))throw new TypeError("Expected a .sl-component root.");const r=t.ownerDocument.defaultView;t.dispatchEvent(new r.Event("sl:buttons-remount"));const d=new r.AbortController;const e=n=>t.querySelector(n);const u=n=>[...t.querySelectorAll(n)];const s=(n,q,D)=>n.addEventListener(q,D,{signal:d.signal});const o=()=>t.getRootNode().activeElement;const i=e("[data-status]");const f=i.textContent;const N=e("[data-note]");const $=N.textContent;let p=false,a="idle",x=0,b=null;function m(n){i.textContent=String(n)}function z(n={}){t.dispatchEvent(new r.CustomEvent("sl:action",{bubbles:true,composed:true,detail:{kind:t.dataset.kind,phase:a,...n}}))}function j(){t.dataset.phase=a;t.setAttribute("aria-busy",String(a==="pending"))}function H(){x++;const n=b;b=null;n?.abort()}function I(){["[data-run]","[data-hold]","[data-stop]","[data-add]"].map(e).find(n=>n&&!n.hidden&&!n.disabled)?.focus()}function C(){if(p||a!=="pending")return false;const n=o()===e("[data-cancel]");H();a="canceled";g();if(n)I();m("Action canceled.");z();return true}async function B(n,q,D,K,V){if(p||a==="pending")return false;if(typeof n!=="function"){a="error";g();m("Connect the action callback before running this control.");return false}const L=++x;b=new r.AbortController;const X=b.signal;a="pending";g();m(K);try{const v=await n({...q,signal:X});if(p||L!==x)return false;if(v?.status==="canceled"){C();return false}D(v);if(p||L!==x)return false;const M=o()===e("[data-cancel]");b=null;a="complete";g();if(M)I();m(V);z({result:v});return true}catch(v){if(p||L!==x)return false;const M=o()===e("[data-cancel]");b=null;a=v?.name==="AbortError"?"canceled":"error";g();if(M)I();m(a==="canceled"?"Action canceled.":"Could not complete the action. Try again.");z({error:v});return false}}const E=l.initialCount??24;if(!Number.isSafeInteger(E)||E<0)throw new RangeError("initialCount must be a non-negative safe integer.");let w=E,h=0,y=null,S="";const R=e("[data-run]");function g(){j();const n=a==="pending";R.setAttribute("aria-disabled",String(n));e("[data-cancel]").hidden=!n;e("[data-run-label]").textContent=n?"Refreshing…":a==="error"?"Retry refresh":"Refresh snapshot";e("[data-count]").textContent=String(w);e("[data-revision]").textContent=h?"Revision "+h:"Initial snapshot";e("[data-updated]").textContent=y?new Date(y).toLocaleTimeString("en",{hour:"2-digit",minute:"2-digit"}):"Not refreshed"}function F(){return B(l.onRefresh,{count:w,version:h},n=>{if(!Number.isSafeInteger(n?.count)||n.count<0)throw new TypeError("onRefresh must return a non-negative safe integer count.");w=n.count;S=n.label==null?"":String(n.label);h++;y=Date.now()},"Reading latest snapshot…","Snapshot refreshed.").then(n=>{if(n&&!p&&a==="complete"&&S)m(S);return n})}s(R,"click",F);s(e("[data-cancel]"),"click",()=>{C();R.focus()});function U(){w=E;h=0;y=null;S="";if(o()===e("[data-cancel]"))R.focus()}const W={start:F};const Y=()=>({count:w,version:h,updatedAt:y});function T(){if(p)return;H();a="idle";U();g();m(f)}function O(){if(p)return;T();p=true;d.abort();N.textContent=$}s(t,"sl:buttons-remount",O);s(t,"keydown",n=>{if(n.key==="Escape"&&a==="pending"){n.preventDefault();n.stopPropagation();C()}});T();return{reset:T,destroy:O,cancel:C,...W,get state(){return{phase:a,...Y()}}}}function A({signal:t,onProgress:l},r,d=900){return new Promise((e,u)=>{if(t.aborted){u(new DOMException("Canceled","AbortError"));return}let s=0;const o=()=>{clearInterval(f);t.removeEventListener("abort",i)};const i=()=>{o();u(new DOMException("Canceled","AbortError"))};const f=setInterval(()=>{s++;l?.(s/4);if(s>=4){o();e(r)}},d/4);t.addEventListener("abort",i,{once:true})})}function k(t){const l=c(t,{onRefresh:r=>A(r,{count:r.count+2,label:"Demo snapshot updated locally."},1200)});t.querySelector("[data-note]").textContent="Local demo · no server is contacted.";return l}return{mount:c,mountPreview:k}})()}function nn(c,A={},{preview:k=false}={}){if(!c||typeof c.attachShadow!=="function")throw new TypeError("A DOM host is required");const t=c.shadowRoot||c.attachShadow({mode:"open"});t.innerHTML=J;const l=c.ownerDocument.createElement("style");const r=new URL("./instrument-sans-variable.woff2",import.meta.url).href;l.textContent=Q.replaceAll("./instrument-sans-variable.woff2",r)+':host{display:block;min-width:0;max-width:100%;font-family:"Instrument Sans",sans-serif}[hidden]{display:none!important}';t.prepend(l);const d=t.querySelector(".sl-component");if(!d){t.replaceChildren();throw new Error("Missing component root")}const e=G(c.ownerDocument,r);let u,s=false;try{const o=Z(),i={};if(P==="upload")i.input=t.querySelector('input[type="file"]');if(["like","copy","download","bookmark","playback","delete","upload","share","follow"].includes(P))i.feedback=t.querySelector("."+P+"-feedback");if(k&&typeof o.mountPreview!=="function")throw new Error("This source has no preview adapter; supply its documented application callbacks.");u=(k?o.mountPreview:o.mount)(d,{...i,...A});if(typeof u?.destroy!=="function")throw new Error("Missing source cleanup contract")}catch(o){e();t.replaceChildren();throw o}return new Proxy(u,{get(o,i){if(i==="destroy")return()=>{if(s)return;s=true;try{o.destroy()}finally{e();t.replaceChildren()}};const f=Reflect.get(o,i,o);return typeof f==="function"?f.bind(o):f}})}export{nn as mountInto,P as variant};

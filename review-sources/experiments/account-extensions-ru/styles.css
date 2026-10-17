@@ -1,0 +1,4 @@
+@import url('../account-services-ru/styles.css');
+.account-control .ae-code{margin:12px 0;padding:12px;border:1px solid var(--ac-edge);border-radius:10px;background:var(--ac-layer);color:var(--ac-text);font:500 15px/22px 'Segoe UI',sans-serif;overflow-wrap:anywhere;user-select:all}
+.account-control[data-kind=balance]>.as-amount{margin:12px 0 6px}.account-control[data-kind=balance]>.as-choice{margin-top:20px}
+.account-control[data-kind=reviews]>.ac-source{margin-top:16px}.account-control[data-kind=lifecycle]>.as-details{margin-top:12px}
