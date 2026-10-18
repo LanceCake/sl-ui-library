@@ -7,7 +7,7 @@
     {
       "name": "sl-ui-library",
       "source": "./plugins/sl-ui-library",
-      "description": "SL UI components with semantic selection, palette adaptation and bundled source."
+      "description": "UI components with HTML, CSS, JavaScript, React and Next.js exports, palette adaptation and real source tools."
     }
   ]
 }

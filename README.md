@@ -1,8 +1,8 @@
 # SL UI Library
 
-An AI plugin for finding and integrating UI components, with a browsable HTML, CSS and JavaScript library and additive React / Next.js exports.
+An AI plugin and interactive UI library with HTML, CSS, JavaScript, React and Next.js exports.
 
-**Version 1.2.0** adds 91 owner-approved elements and React / Next.js source-preserving adapters for every export variant. Existing HTML, CSS and JavaScript remain available. [Release notes](docs/releases/v1.2.0.md) · [Framework integration](docs/frameworks.md) · [Previous release](docs/releases/v1.1.2.md).
+**Version 1.2.1** makes all five export formats explicit throughout plugin discovery, documentation and website descriptions. It retains the 91 owner-approved additions and source-preserving React / Next.js adapters introduced in 1.2.0. Existing HTML, CSS and JavaScript remain available. [Release notes](docs/releases/v1.2.1.md) · [Framework integration](docs/frameworks.md) · [Previous release](docs/releases/v1.2.0.md).
 
 ![Graphite SL UI Library controls in a warm studio composition](docs/media/cover.png)
 
@@ -70,7 +70,7 @@ Start a new task after installation. Then ask, for example:
 
 > Add a like button from SL UI Library. Use a violet background and light text, and keep its animation and keyboard interaction.
 
-The agent selects a component, reads its bundled HTML, CSS and JavaScript, and exports it with the requested palette. The complete catalog works offline after installation. The bundled source CLI requires Node.js 22+.
+The agent selects a component, reads its original source and the instructions for your chosen format, then exports the complete package with the requested palette. HTML, CSS, JavaScript, React and Next.js files are bundled for every variant. The complete catalog and source files work offline after installation; the AI host has its own connectivity requirements. The bundled source CLI requires Node.js 22+.
 
 ### Claude and ChatGPT without a terminal
 
@@ -123,8 +123,8 @@ and replace it through the host's plugin manager.
 The repository package, portable manifest, Claude/Codex manifests and bundled
 catalog share the same version. Every published plugin-code change must increment
 the version; a GitHub push alone is not sufficient for version-aware caches.
-Version 1.1.2 makes the stricter source gate discoverable to clients that skip an
-unchanged plugin version.
+Version 1.2.1 refreshes framework-format descriptions for version-aware clients.
+The earlier 1.1.2 release introduced the stricter source gate.
 
 [Claude Code version detection](https://code.claude.com/docs/en/plugin-marketplaces#version-resolution-and-release-channels)
 · [Codex marketplace commands](https://developers.openai.com/plugins/build/plugins).
@@ -145,7 +145,19 @@ An opt-in data updater is prepared for the release channel. Once published and e
 
 ## Component integration
 
-Each component archive includes HTML, CSS, JavaScript, an integration example and local assets. Its Usage notes describe how to add it to your project and connect action handlers.
+Each component archive includes HTML, CSS, JavaScript, React and Next.js exports, integration examples and local assets. Its Usage notes describe how to add it to your project and connect action handlers.
+
+### Choose an export format
+
+| Format | Entry files | Integration |
+| --- | --- | --- |
+| HTML, CSS and JavaScript | `index.html`, `buttons.css`, `buttons.js`, `example.js` and any local modules | Use the original controller and connect your application actions. |
+| React | `Component.jsx` and `react-example.jsx` | Import the source-preserving adapter and own callbacks in your application. |
+| Next.js | `NextClient.jsx` and `next-page.jsx` | Use the Client Component boundary and the callback-owning example. |
+
+Download the complete ZIP. React and Next.js entries depend on `react-controller.mjs`, `react-font.mjs`, the bundled font and any documented supporting resources; copying one JSX file is not a complete integration. The examples and `framework-usage.md` describe props, refs and lifecycle behavior.
+
+React and Next.js exports are isolated client-widget adapters over the original controllers, not native React-state rewrites. Initial server output is a stable placeholder, not meaningful widget SSR. Keep host form ownership, callbacks, CSP and accessibility integration in mind. See the [framework guide](docs/frameworks.md) for the complete contract.
 
 Archive, rename and creation demos only change preview state. In production, show success after your own operation succeeds. User-entered names remain literal text, including Unicode; action labels stay English.
 
@@ -190,7 +202,7 @@ Edit component sources in `public/packages/` and metadata in `public/catalog-dat
 - Source, ZIP export and agent bundle consistency checks.
 - No analytics scripts or tracking pixels.
 
-See [QA evidence and limitations](QA.md). Chrome is the current automated browser target; Firefox, Safari and physical touch devices still need a separate release check.
+See [QA evidence and limitations](QA.md). The 1.2.0 framework release was checked in Chromium-based Microsoft Edge; Firefox, Safari and physical touch devices still need a separate release check.
 
 ![Graphite rating, topic chips, pin and volume studio composition](docs/media/studio.png)
 

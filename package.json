@@ -1,10 +1,10 @@
 {
   "name": "sl-ui-library",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "license": "MIT",
   "private": true,
   "type": "module",
-  "description": "Interactive UI components and an agent toolkit. HTML, CSS and JavaScript with additive React and Next.js adapters.",
+  "description": "UI library and AI plugin with HTML, CSS, JavaScript, React and Next.js exports.",
   "engines": {
     "node": ">=22"
   },

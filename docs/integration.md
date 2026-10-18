@@ -3,10 +3,18 @@
 1. Start the library with `npm start` and choose a category.
 2. Open a component, try its states and read Usage.
 3. Download its ZIP, or use the agent CLI to copy a complete variant.
-4. Serve the extracted example over HTTP. Keep supporting JavaScript, fonts and `OFL.txt` together.
-5. Adapt the markup, CSS variables and the controller initialization in `example.js` to your app.
+4. Choose the vanilla HTML/CSS/JavaScript example, React adapter or Next.js client entry. Keep supporting modules, fonts and `OFL.txt` together.
+5. Serve vanilla examples over HTTP, or use the complete exported package in your React/Next.js application. Adapt CSS variables and connect real action callbacks.
 
-Each package is an independent HTML/CSS/JavaScript example, not a framework-specific component. In React, Vue or similar frameworks, mount the controller after its DOM exists and call `destroy()` when removing it. Inspect the package's actual API; controllers are not all interchangeable.
+Every package retains its independent HTML, CSS and JavaScript example and additionally includes React and Next.js exports. The vanilla controller remains usable without a framework. Inspect the package's actual API; controllers are not all interchangeable.
+
+## React and Next.js
+
+For React, import `Component.jsx` and inspect `react-example.jsx`. For Next.js, use `NextClient.jsx` and the callback-owning `next-page.jsx` example. These files require `react-controller.mjs`, `react-font.mjs`, the bundled font and documented supporting resources. Keep the complete package together; copying a single JSX file is insufficient.
+
+Both exports are source-preserving client-widget adapters with isolated Shadow DOM. They are not native React-state rewrites and do not provide meaningful widget SSR; initial server output is a stable placeholder. Connect application actions and form values through the documented callbacks/ref API, rather than assuming outer forms can serialize controls across a Shadow DOM boundary.
+
+Read `framework-usage.md` in the package and the [framework integration guide](frameworks.md) for lifecycle, examples, CSP and integration constraints. For another framework such as Vue, mount the vanilla controller after its DOM exists and call `destroy()` when removing it.
 
 ## Example: project dialog
 

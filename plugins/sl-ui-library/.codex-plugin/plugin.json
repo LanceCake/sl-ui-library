@@ -1,15 +1,15 @@
 {
   "name": "sl-ui-library",
-  "version": "1.2.0",
-  "description": "Find real SL UI components, adapt their palette and integrate bundled HTML/CSS/JavaScript or source-preserving React/Next.js adapters.",
+  "version": "1.2.1",
+  "description": "Find SL UI components with HTML, CSS, JavaScript, React and Next.js exports. Adapt their palette and preserve source behavior.",
   "author": {
     "name": "SL"
   },
   "skills": "./skills/",
   "interface": {
     "displayName": "SL UI Library",
-    "shortDescription": "Handcrafted components for your next interface.",
-    "longDescription": "Let the agent choose from 388 HTML, CSS and JavaScript components across ten categories, plus source-preserving React and Next.js adapters. Inspect real source, adapt your palette and integrate a complete package. The complete library works offline. Optional catalog updates require a published channel and explicit opt-in.",
+    "shortDescription": "UI components for HTML, CSS, JavaScript, React and Next.js.",
+    "longDescription": "Choose from 388 interactive components across ten categories, with HTML, CSS, JavaScript, React and Next.js exports. Read real source, adapt its palette and integrate a complete package. React and Next.js adapters preserve the original controllers as isolated client widgets; meaningful widget SSR is not provided. Catalog and source files work offline. Optional catalog updates require a published channel and explicit opt-in.",
     "developerName": "SL",
     "category": "Productivity",
     "capabilities": [

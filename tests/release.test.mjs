@@ -24,6 +24,8 @@ test('release versions and public component counts agree with the catalog',async
   }
   assert.doesNotMatch(readme,/awaiting owner review|Nothing added yet|Local development snapshot/);
   const manifest=await json('plugins/sl-ui-library/.codex-plugin/plugin.json');
-  assert.ok(manifest.interface.longDescription.includes(`${components.length} HTML`));
+  assert.ok(manifest.interface.longDescription.includes(`${components.length} interactive components`));
+  for(const format of ['HTML','CSS','JavaScript','React','Next.js'])assert.ok(manifest.interface.longDescription.includes(format),format);
+  assert.ok(manifest.interface.longDescription.includes('isolated client widgets'));
   assert.ok((await text('public/showcase.html')).includes(`${components.length} components.`));
 });

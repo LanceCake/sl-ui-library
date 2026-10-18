@@ -1,6 +1,6 @@
 ---
 name: use-sl-ui
-description: Choose and integrate SL UI Library components when building or refining an interface using this library, including semantic component selection and adapting its palette to the host app. Bundled real HTML, CSS and JavaScript work offline.
+description: Choose and integrate SL UI Library components with bundled HTML, CSS, JavaScript, React and Next.js exports, semantic component selection and palette adaptation. Read real source and preserve its behavior.
 ---
 
 # SL UI Library
@@ -50,6 +50,12 @@ node "<plugin>/scripts/library.mjs" install modal-overlay "<project>/components/
 ```
 
 The parent directory must already exist. The CLI refuses existing destinations and symlink parents; it never overwrites files. Choosing a destination does not authorize editing unrelated project configuration. Integrate markup, styles and controllers into the project's existing stack after inspecting the exported example. Serve module examples over HTTP.
+
+## React and Next.js exports
+
+Every variant retains its original HTML, CSS and JavaScript and includes `Component.jsx`, `NextClient.jsx`, `react-controller.mjs`, `react-font.mjs`, callback-owning examples and `framework-usage.md`. After the required original-source gate, read the chosen framework entry, its example and usage instructions. Export the complete package rather than one JSX file.
+
+React and Next.js exports are source-preserving client-widget adapters with isolated Shadow DOM, not native React-state rewrites. Initial server output is a stable placeholder, not meaningful widget SSR. The Next.js example owns callbacks in a Client Component. Use the documented props/ref and callbacks for real operations and form values; keep supporting resources, cleanup and host CSP constraints intact. Framework generation alone is not proof of a working application integration.
 
 ## Palette matching
 
